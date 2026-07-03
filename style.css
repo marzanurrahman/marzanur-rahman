@@ -1037,6 +1037,94 @@ section.alt-bg {
   margin-top: var(--space-6);
 }
 
+/* Philosophy Flow Progression */
+.philosophy-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: var(--space-8);
+  position: relative;
+  gap: var(--space-4);
+}
+
+.philosophy-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+}
+
+.philosophy-step .step-number {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+  background-color: var(--bg-alt);
+  padding: 0 10px;
+}
+
+.philosophy-step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  color: var(--text-heading);
+}
+
+.philosophy-step p {
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* Horizontal line connecting steps on desktop */
+.philosophy-flow::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background-color: var(--border);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .philosophy-flow {
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: flex-start;
+    padding-left: var(--space-4);
+  }
+  .philosophy-flow::before {
+    top: 0;
+    left: 20px;
+    bottom: 0;
+    width: 1px;
+    height: auto;
+  }
+  .philosophy-step {
+    flex-direction: row;
+    gap: var(--space-4);
+    text-align: left;
+    align-items: flex-start;
+  }
+  .philosophy-step .step-number {
+    padding: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    background-color: transparent;
+  }
+  .philosophy-step h3 {
+    margin-bottom: var(--space-1);
+  }
+  .philosophy-step p {
+    margin: 0;
+  }
+}
+
 /* ---------- NEWSLETTER ---------- */
 .newsletter {
   background-color: var(--bg-warm);
