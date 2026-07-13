@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles — Marzanur Rahman</title>
+  <meta name="description" content="Explore practical articles covering marketing systems, Meta Marketing, Google Ads, marketing analytics, AI, automation, and business growth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== ARTICLES PAGE — SCOPED STYLES ===== */
+
+    /* --- Featured Article --- */
+    .articles-hero {
+      padding: calc(88px + var(--space-4)) 0 var(--space-6);
+      background-color: var(--bg-primary);
+    }
+    .featured-article {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+    .featured-content {
+      flex: 0 0 42%;
+    }
+    .featured-image-wrapper {
+      flex: 0 0 58%;
+    }
+    .featured-image-wrapper .article-card-image {
+      aspect-ratio: 16 / 9;
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+      width: 100%;
+    }
+    .featured-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+    .featured-content .article-category {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: var(--space-3);
+    }
+    .featured-content h1 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      line-height: 1.25;
+      margin-bottom: var(--space-3);
+      color: var(--text-heading);
+    }
+    .featured-content p {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-size: 14px;
+    }
+    .featured-meta .article-date {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* --- Common Section Styling --- */
+    .articles-section {
+      padding: var(--space-8) 0;
+      background-color: var(--bg-primary);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-6);
+    }
+    .section-header h2 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-heading);
+      margin: 0;
+    }
+    .section-header a.view-all {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .section-header a.view-all:hover {
+      color: var(--accent-hover);
+    }
+
+    /* --- Top Articles --- */
+    .top-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+    }
+    .top-article-item {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform var(--transition);
+    }
+    .top-article-item:hover {
+      transform: translateY(-2px);
+    }
+    .top-article-thumb {
+      aspect-ratio: 16 / 10;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+      margin-bottom: var(--space-3);
+    }
+    .top-article-item h3 {
+      font-size: 16px;
+      line-height: 1.4;
+      margin-bottom: 6px;
+      color: var(--text-heading);
+    }
+    .top-article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* --- Latest Articles --- */
+    .latest-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    /* --- All Articles & Sidebar --- */
+    .archive-layout {
+      display: flex;
+      gap: var(--space-10);
+      align-items: start;
+    }
+    .archive-content {
+      flex: 0 0 75%;
+    }
+    .archive-sidebar {
+      flex: 0 0 calc(25% - var(--space-10));
+      position: sticky;
+      top: 120px;
+    }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8) var(--space-6);
+    }
+
+    /* Article Card Standard (Latest & Archive) */
+    .article-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card-image {
+      aspect-ratio: 16 / 10;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      background-color: var(--bg-warm);
+      margin-bottom: var(--space-3);
+    }
+    .article-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .article-card:hover .article-card-image img {
+      transform: scale(1.04);
+    }
+    .article-category {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .article-card h3 {
+      font-size: 20px;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: var(--text-heading);
+    }
+    .article-card p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+    .article-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .article-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* --- Category Sidebar --- */
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+    }
+    .category-list li {
+      list-style: none;
+    }
+    .category-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-body);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 6px;
+      transition: all var(--transition);
+      margin-left: -12px;
+    }
+    .category-list a:hover {
+      background-color: var(--bg-warm);
+      color: var(--text-heading);
+    }
+    .category-list a.active {
+      color: var(--text-heading);
+      font-weight: 700;
+      background-color: var(--bg-warm);
+    }
+    .category-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      padding: 2px 8px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* Mobile Category Dropdown */
+    .mobile-category-dropdown {
+      display: none;
+      margin-bottom: var(--space-6);
+    }
+    .mobile-category-select {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--card-radius);
+      background: var(--bg-alt);
+      color: var(--text-heading);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .mobile-category-wrap {
+      position: relative;
+    }
+    .mobile-category-wrap::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--text-heading);
+      pointer-events: none;
+    }
+
+    /* --- Pagination --- */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: var(--space-10);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border);
+    }
+    .page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-body);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all var(--transition);
+    }
+    .page-link:hover {
+      background-color: var(--bg-warm);
+      color: var(--text-heading);
+    }
+    .page-link.active {
+      background-color: var(--text-heading);
+      color: #fff;
+    }
+    .page-link.prev-next {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .page-link.prev-next:hover {
+      background-color: transparent;
+      color: var(--accent-hover);
+    }
+    
+    /* Newsletter editorial reduction */
+    .blog-newsletter {
+      padding: var(--space-10) 0 var(--space-12) 0 !important;
+      border-top: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .archive-layout {
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+      .archive-content {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+      .archive-sidebar {
+        display: none;
+      }
+      .mobile-category-dropdown {
+        display: block;
+      }
+      .top-articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .articles-hero {
+        padding-top: calc(72px + var(--space-4));
+      }
+      .featured-article {
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+      .featured-content, .featured-image-wrapper {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+      .featured-content h1 {
+        font-size: 32px;
+      }
+      .latest-articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 580px) {
+      .top-articles-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      .latest-articles-grid {
+        grid-template-columns: 1fr;
+      }
+      .pagination {
+        gap: 4px;
+      }
+      .page-link.hide-mobile {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">MR</a>
+
+      <nav class="nav-desktop" id="nav-desktop">
+        <a href="index.html">Home</a>
+        <div class="has-dropdown">
+          <a href="#">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="services-meta-marketing.html">Meta Marketing</a>
+            <a href="services-google-ads.html">Google Ads</a>
+            <a href="services-marketing-analytics.html">Marketing Analytics</a>
+            <a href="services-marketing-strategy.html">Marketing Strategy</a>
+            <a href="services-consultation.html">1:1 Consultation</a>
+          </div>
+        </div>
+        <a href="product.html">Product</a>
+        <div class="has-dropdown">
+          <a href="#">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="newsletter-free.html">Free Newsletter</a>
+            <a href="newsletter-signal.html">Signal</a>
+          </div>
+        </div>
+        <a href="case-studies.html">Case Study</a>
+        <div class="has-dropdown">
+          <a href="#">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-cta">Let's Talk</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="services-meta-marketing.html">Meta Marketing</a>
+          <a href="services-google-ads.html">Google Ads</a>
+          <a href="services-marketing-analytics.html">Marketing Analytics</a>
+          <a href="services-marketing-strategy.html">Marketing Strategy</a>
+          <a href="services-consultation.html">1:1 Consultation</a>
+        </div>
+      </div>
+      <a href="product.html">Product</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="newsletter-free.html">Free Newsletter</a>
+          <a href="newsletter-signal.html">Signal</a>
+        </div>
+      </div>
+      <a href="case-studies.html">Case Study</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-cta-mobile">Let's Talk</a>
+    </nav>
+  </header>
+
+  <!-- ====================================================
+       1. FEATURED ARTICLE
+       ==================================================== -->
+  <section class="articles-hero">
+    <div class="container">
+      <article class="featured-article reveal">
+        <div class="featured-image-wrapper">
+          <div class="article-card-image">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px;">Featured Visual</div>
+          </div>
+        </div>
+        <div class="featured-content">
+          <span class="featured-label">FEATURED ARTICLE</span>
+          <span class="article-category">Marketing Systems</span>
+          <h1>Why Most SMEs Don't Need Better Ads. They Need Better Marketing Systems.</h1>
+          <p>A practical look at why isolated campaigns create temporary results and how connected marketing systems create more consistent growth.</p>
+          <div class="featured-meta">
+            <span class="article-date">Oct 12, 2026</span>
+            <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       2. TOP ARTICLES
+       ==================================================== -->
+  <section class="articles-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Top Articles</h2>
+        <a href="#" class="view-all">View All</a>
+      </div>
+      <div class="top-articles-grid">
+        <a href="#" class="top-article-item reveal">
+          <div class="top-article-thumb">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px;">IMG</div>
+          </div>
+          <h3>Building Marketing Systems That Scale</h3>
+          <div class="top-article-meta">
+            <span>Marketing Systems</span>
+            <span>Oct 10, 2026</span>
+          </div>
+        </a>
+        <a href="#" class="top-article-item reveal reveal-delay-1">
+          <div class="top-article-thumb">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px;">IMG</div>
+          </div>
+          <h3>5 Meta Ads Mistakes That Cost SMEs</h3>
+          <div class="top-article-meta">
+            <span>Meta Marketing</span>
+            <span>Oct 05, 2026</span>
+          </div>
+        </a>
+        <a href="#" class="top-article-item reveal reveal-delay-2">
+          <div class="top-article-thumb">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px;">IMG</div>
+          </div>
+          <h3>Using AI Without Losing Strategic Thinking</h3>
+          <div class="top-article-meta">
+            <span>AI &amp; Automation</span>
+            <span>Sep 28, 2026</span>
+          </div>
+        </a>
+        <a href="#" class="top-article-item reveal reveal-delay-3">
+          <div class="top-article-thumb">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px;">IMG</div>
+          </div>
+          <h3>Scaling Search Intent for Better ROI</h3>
+          <div class="top-article-meta">
+            <span>Google Ads</span>
+            <span>Sep 15, 2026</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       3. LATEST ARTICLES
+       ==================================================== -->
+  <section class="articles-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Latest Articles</h2>
+      </div>
+      <div class="latest-articles-grid">
+        <article class="article-card reveal">
+          <div class="article-card-image">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+          </div>
+          <span class="article-category">Marketing Analytics</span>
+          <h3>What Your Dashboard Isn't Telling You</h3>
+          <p>Identify the silent gaps in your tracking setup before they impact revenue.</p>
+          <div class="article-card-footer">
+            <span class="article-date">Sep 02, 2026</span>
+            <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="article-card reveal reveal-delay-1">
+          <div class="article-card-image">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+          </div>
+          <span class="article-category">Business Growth</span>
+          <h3>Aligning Sales and Marketing Operations</h3>
+          <p>Practical steps to remove friction between lead generation and closing deals.</p>
+          <div class="article-card-footer">
+            <span class="article-date">Aug 20, 2026</span>
+            <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="article-card reveal reveal-delay-2">
+          <div class="article-card-image">
+            <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+          </div>
+          <span class="article-category">Strategy</span>
+          <h3>Developing a One-Page Marketing Plan</h3>
+          <p>Simplify complex strategies into a single document that guides execution.</p>
+          <div class="article-card-footer">
+            <span class="article-date">Aug 05, 2026</span>
+            <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       4. ALL ARTICLES + 5. PAGINATION
+       ==================================================== -->
+  <section class="articles-section" style="padding-bottom: var(--space-12);">
+    <div class="container">
+      
+      <div class="archive-layout">
+        <!-- Left Content -->
+        <div class="archive-content">
+          <div class="section-header reveal">
+            <h2>All Articles</h2>
+          </div>
+          
+          <div class="mobile-category-dropdown reveal">
+            <div class="mobile-category-wrap">
+              <select class="mobile-category-select" aria-label="Select Category">
+                <option value="all">All Categories</option>
+                <option value="marketing-systems">Marketing Systems</option>
+                <option value="meta-marketing">Meta Marketing</option>
+                <option value="google-ads">Google Ads</option>
+                <option value="marketing-analytics">Marketing Analytics</option>
+                <option value="ai-automation">AI &amp; Automation</option>
+                <option value="strategy">Strategy</option>
+                <option value="business-growth">Business Growth</option>
+                <option value="research">Research</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="archive-grid">
+            <article class="article-card reveal">
+              <div class="article-card-image">
+                <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+              </div>
+              <span class="article-category">Research</span>
+              <h3>The Real Cost of Not Measuring Marketing</h3>
+              <p>Research-backed analysis of what businesses lose when they don't track outcomes.</p>
+              <div class="article-card-footer">
+                <span class="article-date">Jul 22, 2026</span>
+                <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+              </div>
+            </article>
+
+            <article class="article-card reveal reveal-delay-1">
+              <div class="article-card-image">
+                <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+              </div>
+              <span class="article-category">Marketing Systems</span>
+              <h3>Customer Journey Mapping for SMEs</h3>
+              <p>A practical framework to visualize how customers interact with your business.</p>
+              <div class="article-card-footer">
+                <span class="article-date">Jul 10, 2026</span>
+                <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+              </div>
+            </article>
+            
+            <article class="article-card reveal">
+              <div class="article-card-image">
+                <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+              </div>
+              <span class="article-category">Meta Marketing</span>
+              <h3>Why Your Funnel Isn't Converting</h3>
+              <p>Identify common drop-off points in your conversion funnel.</p>
+              <div class="article-card-footer">
+                <span class="article-date">Jun 28, 2026</span>
+                <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+              </div>
+            </article>
+
+            <article class="article-card reveal reveal-delay-1">
+              <div class="article-card-image">
+                <div style="background-color: var(--bg-warm); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px;">Image</div>
+              </div>
+              <span class="article-category">AI &amp; Automation</span>
+              <h3>Automating Lead Qualification Without Losing Quality</h3>
+              <p>How to use intelligent forms and workflows to save time.</p>
+              <div class="article-card-footer">
+                <span class="article-date">Jun 15, 2026</span>
+                <a href="#" class="text-link">Read Article <span class="arrow">→</span></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination reveal">
+            <a href="#" class="page-link prev-next">← Previous</a>
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link hide-mobile">4</a>
+            <a href="#" class="page-link hide-mobile">5</a>
+            <a href="#" class="page-link prev-next">Next →</a>
+          </div>
+
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside class="archive-sidebar reveal reveal-delay-1">
+          <div class="section-header">
+            <h2>Categories</h2>
+          </div>
+          <ul class="category-list">
+            <li><a href="#" class="active">All Articles</a></li>
+            <li><a href="#">Marketing Systems <span class="category-count">12</span></a></li>
+            <li><a href="#">Meta Marketing <span class="category-count">18</span></a></li>
+            <li><a href="#">Google Ads <span class="category-count">7</span></a></li>
+            <li><a href="#">Marketing Analytics <span class="category-count">9</span></a></li>
+            <li><a href="#">AI &amp; Automation <span class="category-count">11</span></a></li>
+            <li><a href="#">Strategy <span class="category-count">14</span></a></li>
+            <li><a href="#">Business Growth <span class="category-count">8</span></a></li>
+            <li><a href="#">Research <span class="category-count">4</span></a></li>
+          </ul>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       NEWSLETTER
+       ==================================================== -->
+  <section class="newsletter blog-newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter-inner reveal">
+        <h2>Never Miss an Article.</h2>
+        <p>Receive new articles, practical marketing insights, and industry updates directly in your inbox.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-primary">Subscribe →</button>
+        </form>
+        <p class="newsletter-disclaimer">Join 5,000+ business owners. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="/" class="logo logo-full">Marzanur Rahman</a>
+          <p class="footer-tagline">Helping SMEs Build Better Marketing Systems.</p>
+          <p>I help Bangladeshi SME owners solve marketing and customer conversion challenges through better marketing systems.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services-marketing-strategy.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="newsletter-free.html">Newsletter</a></li>
+            <li><a href="#free-guide">Free Guide</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="services-consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="mailto:hello@marzanurrahman.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Marzanur Rahman.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPT ========== -->
+  <script>
+    // Header scroll shadow
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMobile = document.getElementById('nav-mobile');
+
+    navToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navMobile.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-mobile a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.classList.remove('active');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.dropdown-toggle-mobile').forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('active');
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    // Prevent default form submissions (demo)
+    document.querySelectorAll('form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you! This form is not yet connected to a backend.');
+      });
+    });
+  </script>
+
+</body>
+</html>

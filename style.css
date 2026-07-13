@@ -1037,91 +1037,123 @@ section.alt-bg {
   margin-top: var(--space-6);
 }
 
-/* Philosophy Flow Progression */
-.philosophy-flow {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: var(--space-8);
-  position: relative;
-  gap: var(--space-4);
-}
-
-.philosophy-step {
+/* Ultra-Minimal Text Flow Diagram */
+.text-flow-diagram {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  flex: 1;
-}
-
-.philosophy-step .step-number {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: var(--space-2);
-  background-color: var(--bg-alt);
-  padding: 0 10px;
-}
-
-.philosophy-step h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: var(--space-2);
+  margin: var(--space-8) auto;
+  font-family: var(--font-body);
+  font-size: 16px;
   color: var(--text-heading);
+  font-weight: 500;
+  max-width: 400px;
 }
-
-.philosophy-step p {
-  font-size: 14.5px;
-  line-height: 1.6;
+.text-flow-step {
+  text-align: center;
+  padding: var(--space-2) 0;
 }
-
-/* Horizontal line connecting steps on desktop */
-.philosophy-flow::before {
-  content: '';
-  position: absolute;
-  top: 15px;
-  left: 8%;
-  right: 8%;
-  height: 1px;
+.text-flow-arrow {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 300;
+  height: 24px;
+  width: 1px;
   background-color: var(--border);
-  z-index: 1;
+  margin: 0 auto;
+}
+
+/* Philosophy Cards (Principles) */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.principle-card {
+  padding: var(--space-5);
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.principle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.principle-card h3 {
+  font-size: 18px;
+  margin-bottom: var(--space-2);
+}
+
+.principle-card p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Unified Project Editorial Card */
+.project-editorial-card {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0;
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  margin-bottom: var(--space-5);
+}
+
+.project-editorial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.project-image {
+  background-color: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.project-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-content h3 {
+  font-size: 22px;
+  margin-bottom: var(--space-4);
+}
+
+.project-detail {
+  font-size: 15.5px;
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.project-detail strong {
+  color: var(--text-heading);
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
-  .philosophy-flow {
-    flex-direction: column;
-    gap: var(--space-6);
-    align-items: flex-start;
-    padding-left: var(--space-4);
+  .project-editorial-card {
+    grid-template-columns: 1fr;
   }
-  .philosophy-flow::before {
-    top: 0;
-    left: 20px;
-    bottom: 0;
-    width: 1px;
-    height: auto;
+  .project-image {
+    min-height: 240px;
   }
-  .philosophy-step {
-    flex-direction: row;
-    gap: var(--space-4);
-    text-align: left;
-    align-items: flex-start;
-  }
-  .philosophy-step .step-number {
-    padding: 0;
-    margin-bottom: 0;
-    line-height: 1;
-    background-color: transparent;
-  }
-  .philosophy-step h3 {
-    margin-bottom: var(--space-1);
-  }
-  .philosophy-step p {
-    margin: 0;
+  .project-content {
+    padding: var(--space-4);
   }
 }
 
@@ -1549,3 +1581,367 @@ section.alt-bg {
     font-size: 24px;
   }
 }
+
+/* Centering Utilities */
+.hero-centered {
+  text-align: center;
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+.text-center {
+  text-align: center;
+}
+
+/* ---------- SOLUTION PAGE ---------- */
+
+/* Page hero — single-column editorial opener */
+.sol-hero {
+  padding-top: calc(88px + var(--space-10));
+  padding-bottom: var(--space-12);
+  background-color: var(--bg-primary);
+}
+
+.sol-hero-inner {
+  max-width: 720px;
+}
+
+.sol-hero .label {
+  margin-bottom: var(--space-3);
+}
+
+.sol-hero h1 {
+  font-size: 52px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-4);
+}
+
+.sol-hero .sol-lead {
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-bottom: var(--space-6);
+}
+
+.sol-hero .sol-cta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Blockquote-style editorial statement */
+.sol-statement {
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-4);
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.sol-statement h2 {
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.sol-statement p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* Two-column split layout */
+.sol-split {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.sol-split-left {
+  position: sticky;
+  top: calc(88px + var(--space-5));
+}
+
+.sol-split-left h2 {
+  margin-bottom: var(--space-3);
+}
+
+.sol-split-left p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+.sol-split-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sol-block {
+  padding-bottom: var(--space-6);
+}
+
+.sol-block:last-child {
+  padding-bottom: 0;
+}
+
+.sol-block h3 {
+  font-size: 22px;
+  margin-bottom: var(--space-1);
+  line-height: 1.35;
+}
+
+.sol-block p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* Numbered list with vertical line */
+.sol-steps {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+  counter-reset: step;
+}
+
+.sol-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--space-3);
+  padding-bottom: var(--space-6);
+  position: relative;
+}
+
+.sol-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Vertical connector line */
+.sol-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 40px;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--border);
+}
+
+.sol-step-num {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-heading);
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  background-color: var(--bg-alt);
+  flex-shrink: 0;
+}
+
+.sol-step-body h3 {
+  font-size: 22px;
+  margin-bottom: var(--space-1);
+  line-height: 1.35;
+  padding-top: 10px;
+}
+
+.sol-step-body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sol-hero {
+    padding-top: calc(88px + var(--space-6));
+    padding-bottom: var(--space-8);
+  }
+  .sol-hero h1 {
+    font-size: 36px;
+  }
+  .sol-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .sol-split-left {
+    position: static;
+  }
+}
+
+
+
+
+
+
+/* Newsletter Page Specific Styles */
+
+.sol-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8) var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.sol-checklist-item {
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.sol-checklist-item::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.sol-checklist-item h3 {
+  margin-bottom: var(--space-2);
+}
+
+.sol-checklist-item p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .sol-checklist {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.signal-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.signal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.signal-list li {
+  padding-left: var(--space-4);
+  position: relative;
+  margin-bottom: var(--space-2);
+  color: var(--text-muted);
+}
+
+.signal-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+@media (max-width: 500px) {
+  .signal-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.newsletter-disclaimer {
+  margin-top: var(--space-4) !important;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: var(--space-10) auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(22, 33, 62, 0.1);
+  padding: var(--space-6) 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(22, 33, 62, 0.1);
+}
+
+.faq-item h3 {
+  margin-bottom: var(--space-3);
+}
+
+
+.faq-item p {
+  margin-bottom: 0;
+}
+
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.edition-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.edition-card .article-card-image {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  background-color: var(--bg-warm);
+}
+
+.edition-card h3 {
+  font-size: 22px;
+  line-height: 1.35;
+  margin-bottom: var(--space-2);
+}
+
+.edition-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  flex-grow: 1;
+}
+
+@media (max-width: 992px) {
+  .editions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .editions-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* Centered Hero Modifier */
+.sol-hero-center .sol-hero-inner {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sol-hero-center .sol-lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sol-hero-center .sol-cta {
+  justify-content: center;
+}
+

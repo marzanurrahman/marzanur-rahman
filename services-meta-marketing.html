@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Marketing — Marzanur Rahman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Scoped Meta Marketing Page Styles */
+    .meta-hero {
+      padding: calc(88px + var(--space-10)) 0 var(--space-8);
+      background-color: var(--bg-primary);
+    }
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1.20fr 0.80fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.15;
+      margin-bottom: var(--space-3);
+      color: var(--text-heading);
+    }
+    .hero-content .hero-intro {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: var(--space-4);
+      max-width: 620px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    
+    /* Right column process flow representation */
+    .hero-process-subtle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-4) var(--space-3);
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      position: relative;
+    }
+    .process-step-pill {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-heading);
+      padding: 10px 18px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-primary);
+      width: 100%;
+      text-align: center;
+    }
+    .process-arrow-subtle {
+      font-size: 14px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* Section defaults */
+    .meta-section {
+      padding: var(--space-12) 0;
+      background-color: var(--bg-primary);
+    }
+    .meta-section.alt-bg {
+      background-color: var(--bg-alt);
+    }
+    .meta-section.warm-bg {
+      background-color: var(--bg-warm);
+    }
+    .meta-section-header {
+      margin-bottom: var(--space-6);
+      max-width: 750px;
+    }
+    .meta-section-header h2 {
+      margin-top: var(--space-1);
+      font-size: clamp(26px, 3.5vw, 36px);
+      line-height: 1.25;
+    }
+    .meta-section-header p {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-top: var(--space-2);
+    }
+    
+    /* Problem section list */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-8);
+    }
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .problem-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: var(--space-2);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border);
+    }
+    .problem-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .problem-num {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .problem-content h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: var(--text-heading);
+    }
+    .problem-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Approach section process */
+    .approach-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      position: relative;
+    }
+    .approach-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: var(--space-3);
+      align-items: start;
+      position: relative;
+    }
+    .approach-num {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .approach-content h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+      color: var(--text-heading);
+    }
+    .approach-content p {
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin: 0;
+      max-width: 800px;
+    }
+
+    /* Scope Section grid */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2) var(--space-8);
+    }
+    .scope-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15.5px;
+      color: var(--text-body);
+    }
+    .scope-marker {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Creative testing section process */
+    .creative-testing-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: var(--space-5);
+      padding: var(--space-3) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .testing-node {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-heading);
+      text-align: center;
+    }
+    .testing-arrow {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Measurement block */
+    .measurement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-8);
+    }
+    .signals-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2) var(--space-4);
+    }
+    .signal-item {
+      padding: 14px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+    .measurement-bottom {
+      margin-top: var(--space-5);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      border-left: 2px solid var(--accent);
+      padding-left: var(--space-3);
+    }
+
+    /* Fits section */
+    .fits-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .fit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+    .fit-marker {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+
+    /* Work Together Section option cards */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    .option-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+    }
+    .option-meta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-1);
+    }
+    .option-card h3 {
+      font-size: 20px;
+      margin-bottom: var(--space-2);
+    }
+    .option-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .options-bottom {
+      margin-top: var(--space-3);
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    /* Final CTA */
+    .cta-narrow {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .cta-narrow h2 {
+      font-size: 32px;
+      margin-bottom: var(--space-2);
+    }
+    .cta-narrow p {
+      font-size: 16px;
+      color: var(--text-body);
+      margin-bottom: var(--space-3);
+    }
+
+    /* Media query breakpoints */
+    @media (max-width: 900px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+      .problem-grid, .measurement-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+    }
+    @media (max-width: 768px) {
+      .scope-grid, .options-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+      .creative-testing-flow {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .testing-arrow {
+        transform: rotate(90deg);
+        margin-left: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">MR</a>
+
+      <nav class="nav-desktop" id="nav-desktop">
+        <a href="index.html">Home</a>
+        <div class="has-dropdown">
+          <a href="#">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="services-meta-marketing.html">Meta Marketing</a>
+            <a href="services-google-ads.html">Google Ads</a>
+            <a href="services-marketing-analytics.html">Marketing Analytics</a>
+            <a href="services-marketing-strategy.html">Marketing Strategy</a>
+            <a href="services-consultation.html">1:1 Consultation</a>
+          </div>
+        </div>
+        <a href="product.html">Product</a>
+        <div class="has-dropdown">
+          <a href="#">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="newsletter-free.html">Free Newsletter</a>
+            <a href="newsletter-signal.html">Signal</a>
+          </div>
+        </div>
+        <a href="case-studies.html">Case Study</a>
+        <div class="has-dropdown">
+          <a href="#">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-cta">Let's Talk</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="services-meta-marketing.html">Meta Marketing</a>
+          <a href="services-google-ads.html">Google Ads</a>
+          <a href="services-marketing-analytics.html">Marketing Analytics</a>
+          <a href="services-marketing-strategy.html">Marketing Strategy</a>
+          <a href="services-consultation.html">1:1 Consultation</a>
+        </div>
+      </div>
+      <a href="product.html">Product</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="newsletter-free.html">Free Newsletter</a>
+          <a href="newsletter-signal.html">Signal</a>
+        </div>
+      </div>
+      <a href="case-studies.html">Case Study</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-cta-mobile">Let's Talk</a>
+    </nav>
+  </header>
+
+  <!-- ========== 1. META MARKETING HERO ========== -->
+  <section class="meta-hero">
+    <div class="container">
+      <div class="hero-split">
+        <div class="hero-content reveal">
+          <span class="label">Meta Marketing</span>
+          <h1>Meta Ads Should Do More Than Generate Clicks.</h1>
+          <p class="hero-intro">I help businesses plan, launch and improve Meta advertising around clear customer acquisition goals, better creative testing and measurable campaign data.</p>
+          <div class="hero-ctas">
+            <a href="contact.html" class="btn btn-primary">Discuss a Project</a>
+            <a href="#selected-work" class="btn btn-secondary">View Selected Work</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal reveal-delay-1">
+          <div class="hero-process-subtle">
+            <div class="process-step-pill">Objective</div>
+            <div class="process-arrow-subtle">↓</div>
+            <div class="process-step-pill">Creative</div>
+            <div class="process-arrow-subtle">↓</div>
+            <div class="process-step-pill">Campaign</div>
+            <div class="process-arrow-subtle">↓</div>
+            <div class="process-step-pill">Lead</div>
+            <div class="process-arrow-subtle">↓</div>
+            <div class="process-step-pill">Measurement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2. WHY META ADS BECOME EXPENSIVE ========== -->
+  <section class="meta-section alt-bg">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="hero-content reveal">
+          <span class="label">The Problem</span>
+          <h2>Running Ads Is Easy. Building a Repeatable Acquisition Process Is Harder.</h2>
+          <p style="font-size: 16px; line-height: 1.75; color: var(--text-body); max-width: 90%;">Campaign performance often becomes difficult to understand when strategy, creative decisions and measurement are treated as separate activities.</p>
+        </div>
+        <div class="problem-list reveal reveal-delay-1">
+          <div class="problem-item">
+            <span class="problem-num">01</span>
+            <div class="problem-content">
+              <h3>Unclear Campaign Direction</h3>
+              <p>Campaigns launch without a clearly defined acquisition objective or testing priority.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <span class="problem-num">02</span>
+            <div class="problem-content">
+              <h3>Creative Fatigue</h3>
+              <p>The same messages and creatives continue running after performance begins to decline.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <span class="problem-num">03</span>
+            <div class="problem-content">
+              <h3>Weak Measurement</h3>
+              <p>Leads are generated, but campaign data is disconnected from actual customer outcomes and the wider acquisition process.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <span class="problem-num">04</span>
+            <div class="problem-content">
+              <h3>Reactive Optimisation</h3>
+              <p>Decisions are made from short-term performance changes instead of structured analysis and continuous learning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. HOW I APPROACH META MARKETING ========== -->
+  <section class="meta-section">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">The Approach</span>
+        <h2>How I Approach Meta Marketing</h2>
+        <p>The work starts by understanding the business and acquisition process before campaign decisions are made.</p>
+      </div>
+      <div class="approach-timeline reveal reveal-delay-1">
+        <div class="approach-step">
+          <span class="approach-num">01</span>
+          <div class="approach-content">
+            <h3>Business &amp; Offer Review</h3>
+            <p>Understand the business, offer, customer and current acquisition process before defining the advertising direction.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <span class="approach-num">02</span>
+          <div class="approach-content">
+            <h3>Campaign Strategy</h3>
+            <p>Define campaign objectives, audience direction, budget structure and testing priorities around the business goal.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <span class="approach-num">03</span>
+          <div class="approach-content">
+            <h3>Creative Direction</h3>
+            <p>Develop messaging angles, creative concepts and testing variations around customer problems, intent and campaign objectives.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <span class="approach-num">04</span>
+          <div class="approach-content">
+            <h3>Campaign Execution</h3>
+            <p>Build and launch campaigns with a clear structure for delivery, testing and measurement.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <span class="approach-num">05</span>
+          <div class="approach-content">
+            <h3>Performance &amp; Iteration</h3>
+            <p>Review campaign and creative data, identify performance changes and introduce new tests or adjustments when needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. WHAT THE WORK CAN INCLUDE ========== -->
+  <section class="meta-section alt-bg">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">Scope</span>
+        <h2>What the Work Can Include</h2>
+        <p>The exact scope depends on the business, campaign requirements and existing marketing setup.</p>
+      </div>
+      <div class="scope-grid reveal reveal-delay-1">
+        <div class="scope-column">
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Campaign strategy and planning</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Meta Ads account review</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Campaign setup and restructuring</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Lead generation campaigns</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Creative strategy and direction</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Ad copy and messaging variations</span>
+          </div>
+        </div>
+        <div class="scope-column">
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Creative testing plans</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Performance analysis</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Campaign optimisation</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Lead flow and CRM coordination</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Tracking coordination</span>
+          </div>
+          <div class="scope-item">
+            <span class="scope-marker"></span>
+            <span>Reporting and performance insights</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. CREATIVE STRATEGY ========== -->
+  <section class="meta-section warm-bg">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">Creative Strategy</span>
+        <h2>Creative Is Part of the Campaign Strategy.</h2>
+        <p style="color: var(--text-body); max-width: 800px; font-size: 16px; line-height: 1.75;">Creative decisions should not be separated from campaign performance. I review previous campaign and creative data to understand what has been working, where performance may be declining and what new messaging or creative direction should be tested next.</p>
+      </div>
+      <div class="creative-testing-flow reveal reveal-delay-1">
+        <div class="testing-node">Review</div>
+        <div class="testing-arrow">→</div>
+        <div class="testing-node">Identify</div>
+        <div class="testing-arrow">→</div>
+        <div class="testing-node">Develop</div>
+        <div class="testing-arrow">→</div>
+        <div class="testing-node">Test</div>
+        <div class="testing-arrow">→</div>
+        <div class="testing-node">Learn</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. MEASUREMENT AND PERFORMANCE ANALYSIS ========== -->
+  <section class="meta-section">
+    <div class="container">
+      <div class="measurement-grid">
+        <div class="measurement-left reveal">
+          <span class="label">Measurement</span>
+          <h2>Campaign Data Should Lead to Better Decisions.</h2>
+          <p style="font-size: 16px; line-height: 1.75; color: var(--text-body);">The metrics reviewed depend on the campaign objective and available tracking data. Performance is analysed in context rather than using one metric as the entire definition of success.</p>
+        </div>
+        <div class="measurement-right reveal reveal-delay-1">
+          <div class="signals-list">
+            <div class="signal-item">Cost per Lead</div>
+            <div class="signal-item">Click-Through Rate</div>
+            <div class="signal-item">Link Click Performance</div>
+            <div class="signal-item">Creative Performance</div>
+            <div class="signal-item">Lead Volume</div>
+            <div class="signal-item">Campaign Delivery</div>
+            <div class="signal-item">Audience Performance</div>
+            <div class="signal-item">Performance Trends</div>
+          </div>
+        </div>
+      </div>
+      <div class="measurement-bottom reveal reveal-delay-2">
+        <p>Campaign and creative data are reviewed to understand performance changes, identify potential problems and support the next optimisation or testing decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. SELECTED META MARKETING PROJECTS ========== -->
+  <section class="meta-section alt-bg" id="selected-work">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">Selected Work</span>
+        <h2>Selected Meta Marketing Projects</h2>
+        <p>A selection of Meta advertising work involving campaign strategy, creative testing and performance improvement.</p>
+      </div>
+      
+      <div class="projects-list">
+        <!-- Project 1 -->
+        <div class="project-editorial-card reveal">
+          <div class="project-image">
+            <span class="label" style="opacity: 0.25; margin: 0; font-size: 16px;">Meta Ads</span>
+          </div>
+          <div class="project-content">
+            <span class="label" style="font-size: 11px; margin-bottom: var(--space-1); letter-spacing: 0.05em;">Meta Ads / Lead Generation</span>
+            <h3>Bakerview Memorial Cemetery</h3>
+            <p class="project-detail" style="margin-bottom: 0;"><strong>Scope:</strong> Creative refresh and campaign messaging across community-focused lead generation campaigns.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-editorial-card reveal">
+          <div class="project-image">
+            <span class="label" style="opacity: 0.25; margin: 0; font-size: 16px;">Meta Ads</span>
+          </div>
+          <div class="project-content">
+            <span class="label" style="font-size: 11px; margin-bottom: var(--space-1); letter-spacing: 0.05em;">Meta Ads / Creative Testing</span>
+            <h3>Advantage Flooring</h3>
+            <p class="project-detail" style="margin-bottom: 0;"><strong>Scope:</strong> Meta campaign setup and creative testing for flooring services in the Ottawa market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8. WHO THIS IS FOR ========== -->
+  <section class="meta-section">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">Fit</span>
+        <h2>This Work May Be Suitable For Businesses That:</h2>
+      </div>
+      <div class="fits-list reveal reveal-delay-1">
+        <div class="fit-item">
+          <span class="fit-marker"></span>
+          <span>Are already investing in Meta Ads but lack a clear testing process.</span>
+        </div>
+        <div class="fit-item">
+          <span class="fit-marker"></span>
+          <span>Need a more structured campaign and creative approach.</span>
+        </div>
+        <div class="fit-item">
+          <span class="fit-marker"></span>
+          <span>Want better visibility into campaign performance.</span>
+        </div>
+        <div class="fit-item">
+          <span class="fit-marker"></span>
+          <span>Need Meta advertising connected more clearly with their lead acquisition process.</span>
+        </div>
+        <div class="fit-item">
+          <span class="fit-marker"></span>
+          <span>Are preparing to launch paid social with a defined business objective.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. HOW WE CAN WORK TOGETHER ========== -->
+  <section class="meta-section alt-bg">
+    <div class="container">
+      <div class="meta-section-header reveal">
+        <span class="label">Working Model</span>
+        <h2>How We Can Work Together</h2>
+      </div>
+      <div class="options-grid reveal reveal-delay-1">
+        <div class="option-card">
+          <span class="option-meta">Option 01</span>
+          <h3>Project-Based Meta Marketing</h3>
+          <p>For campaign planning, setup, restructuring, creative strategy or defined advertising projects.</p>
+        </div>
+        <div class="option-card">
+          <span class="option-meta">Option 02</span>
+          <h3>Ongoing Meta Marketing Support</h3>
+          <p>For businesses requiring continuous campaign management, testing and performance iteration.</p>
+        </div>
+      </div>
+      <div class="options-bottom reveal reveal-delay-2">
+        <p>Scope and involvement depend on the business, campaign requirements and existing marketing infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10. FINAL CTA ========== -->
+  <section class="meta-section">
+    <div class="container">
+      <div class="cta-narrow reveal">
+        <span class="label">Meta Marketing</span>
+        <h2>Have a Meta Ads Project in Mind?</h2>
+        <p>Tell me about the business, current advertising situation and what you are trying to improve.</p>
+        <div style="margin-top: var(--space-4);">
+          <a href="contact.html" class="btn btn-primary">Discuss a Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="/" class="logo logo-full">Marzanur Rahman</a>
+          <p class="footer-tagline">Helping SMEs Build Better Marketing Systems.</p>
+          <p>I help Bangladeshi SME owners solve marketing and customer conversion challenges through better marketing systems.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#ways-to-work">Services</a></li>
+            <li><a href="blog.html">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="newsletter-free.html">Newsletter</a></li>
+            <li><a href="#free-guide">Free Guide</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="mailto:hello@marzanurrahman.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Marzanur Rahman.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPT ========== -->
+  <script>
+    // Header scroll shadow
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMobile = document.getElementById('nav-mobile');
+
+    navToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navMobile.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-mobile a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.classList.remove('active');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.dropdown-toggle-mobile').forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('active');
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    // Prevent default form submissions (demo)
+    document.querySelectorAll('form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you! This form is not yet connected to a backend.');
+      });
+    });
+  </script>
+
+</body>
+</html>

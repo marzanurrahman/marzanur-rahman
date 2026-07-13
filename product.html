@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Marzanur Rahman</title>
+  <meta name="description" content="Practical digital products, templates, and tools to help SME owners build better marketing systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ========== PRODUCTS PAGE STYLES ========== */
+
+    /* --- Hero --- */
+    .products-hero {
+      padding: calc(88px + var(--space-10)) 0 var(--space-8);
+      text-align: center;
+      background-color: var(--bg-primary);
+    }
+
+    .products-hero h1 {
+      margin-bottom: var(--space-2);
+    }
+
+    .products-hero p {
+      color: var(--text-muted);
+      font-size: 19px;
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* --- Control Bar --- */
+    .control-section {
+      padding: 0 0 var(--space-4);
+      background-color: var(--bg-primary);
+    }
+
+    .control-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .search-wrap {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: 12px 16px 12px 42px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--card-radius);
+      background: var(--bg-alt);
+      color: var(--text-body);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-input:focus {
+      border-color: var(--text-heading);
+    }
+
+    .control-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--card-radius);
+      background: var(--bg-alt);
+      color: var(--text-heading);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+
+    .control-btn:hover {
+      border-color: var(--text-heading);
+    }
+
+    .control-btn.has-active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .sort-wrap {
+      position: relative;
+    }
+
+    .sort-select {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 36px 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--card-radius);
+      background: var(--bg-alt);
+      color: var(--text-heading);
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--transition);
+      line-height: 1.3;
+    }
+
+    .sort-select:focus,
+    .sort-select:hover {
+      border-color: var(--text-heading);
+    }
+
+    .sort-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--text-muted);
+      pointer-events: none;
+    }
+
+    .results-count {
+      font-size: 14px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-left: var(--space-1);
+    }
+
+    /* --- Active Filter Chips --- */
+    .active-chips {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      flex-wrap: wrap;
+      padding-top: var(--space-2);
+    }
+
+    .active-chips:empty {
+      display: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-alt);
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all var(--transition);
+      line-height: 1.3;
+    }
+
+    .chip:hover {
+      border-color: var(--text-muted);
+      background: var(--bg-warm);
+    }
+
+    .chip svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .chips-clear {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      transition: color var(--transition);
+    }
+
+    .chips-clear:hover {
+      color: var(--accent-hover);
+    }
+
+    /* --- Filter Drawer Overlay --- */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 33, 62, 0.3);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-slow), visibility var(--transition-slow);
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* --- Filter Drawer --- */
+    .filter-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 380px;
+      max-width: 90vw;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--bg-alt);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .drawer-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .drawer-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      border-radius: 50%;
+      transition: all var(--transition);
+    }
+
+    .drawer-close:hover {
+      background: var(--bg-warm);
+      color: var(--text-heading);
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4);
+    }
+
+    .drawer-group {
+      margin-bottom: var(--space-5);
+    }
+
+    .drawer-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .drawer-group-title {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .drawer-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .drawer-option:hover {
+      color: var(--text-heading);
+    }
+
+    .drawer-option input[type="checkbox"],
+    .drawer-option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .drawer-option-label {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-body);
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.4;
+    }
+
+    .drawer-option input:checked + .drawer-option-label {
+      color: var(--text-heading);
+      font-weight: 600;
+    }
+
+    /* --- Drawer Footer --- */
+    .drawer-footer {
+      padding: var(--space-3) var(--space-4);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+      background: var(--bg-alt);
+    }
+
+    .drawer-clear {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px 16px;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+
+    .drawer-clear:hover {
+      color: var(--text-heading);
+    }
+
+    .drawer-apply {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: var(--btn-radius);
+      border: 2px solid var(--text-heading);
+      background-color: var(--accent);
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: 3px 3px 0 var(--text-heading);
+      white-space: nowrap;
+    }
+
+    .drawer-apply:hover {
+      background-color: var(--accent-hover);
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--text-heading);
+    }
+
+    /* --- Product Grid --- */
+    .products-section {
+      padding: 0 0 var(--space-15);
+      background-color: var(--bg-primary);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    /* --- Product Card --- */
+    .product-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .product-card-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+    }
+
+    .product-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-card-thumb img {
+      transform: scale(1.04);
+    }
+
+    .product-card-body {
+      padding: var(--space-3) var(--space-3) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-card-meta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .product-card-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .product-card-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    .product-card-footer {
+      padding: 0 var(--space-3) var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .product-price {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1;
+    }
+
+    .product-price-free {
+      color: var(--accent);
+    }
+
+    .product-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: var(--btn-radius);
+      border: 2px solid var(--text-heading);
+      background-color: var(--accent);
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      line-height: 1.3;
+      white-space: nowrap;
+      box-shadow: 3px 3px 0 var(--text-heading);
+    }
+
+    .product-btn:hover {
+      background-color: var(--accent-hover);
+      color: #FFFFFF;
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--text-heading);
+    }
+
+    .product-btn-secondary {
+      background-color: transparent;
+      color: var(--text-heading);
+      box-shadow: 3px 3px 0 rgba(22, 33, 62, 0.1);
+    }
+
+    .product-btn-secondary:hover {
+      background-color: var(--text-heading);
+      color: #FFFFFF;
+      box-shadow: 2px 2px 0 var(--text-heading);
+    }
+
+    /* --- Empty State --- */
+    .empty-state {
+      text-align: center;
+      padding: var(--space-10) var(--space-4);
+      grid-column: 1 / -1;
+    }
+
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: var(--space-3);
+      opacity: 0.4;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+      font-size: 17px;
+    }
+
+    .empty-state-reset {
+      display: inline-block;
+      margin-top: var(--space-2);
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 15px;
+      transition: color var(--transition);
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+    }
+
+    .empty-state-reset:hover {
+      color: var(--accent-hover);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .products-hero {
+        padding: calc(72px + var(--space-6)) 0 var(--space-5);
+      }
+
+      .products-hero h1 {
+        font-size: 32px;
+      }
+
+      .products-hero p {
+        font-size: 16px;
+      }
+
+      .control-bar {
+        flex-wrap: wrap;
+      }
+
+      .search-wrap {
+        flex: 1 1 100%;
+      }
+
+      .control-btn,
+      .sort-wrap {
+        flex: 1;
+      }
+
+      .sort-select {
+        width: 100%;
+      }
+
+      .results-count {
+        flex: 1 1 100%;
+        margin-left: 0;
+        text-align: center;
+        padding-top: 4px;
+      }
+
+      .filter-drawer {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .product-card-title {
+        font-size: 18px;
+      }
+
+      .product-price {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">MR</a>
+
+      <nav class="nav-desktop" id="nav-desktop">
+        <a href="index.html">Home</a>
+        <div class="has-dropdown">
+          <a href="#">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="services-meta-marketing.html">Meta Marketing</a>
+            <a href="services-google-ads.html">Google Ads</a>
+            <a href="services-marketing-analytics.html">Marketing Analytics</a>
+            <a href="services-marketing-strategy.html">Marketing Strategy</a>
+            <a href="services-consultation.html">1:1 Consultation</a>
+          </div>
+        </div>
+        <a href="product.html" class="active">Product</a>
+        <div class="has-dropdown">
+          <a href="#">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="newsletter-free.html">Free Newsletter</a>
+            <a href="newsletter-signal.html">Signal</a>
+          </div>
+        </div>
+        <a href="case-studies.html">Case Study</a>
+        <div class="has-dropdown">
+          <a href="#">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-cta">Let's Talk</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="services-meta-marketing.html">Meta Marketing</a>
+          <a href="services-google-ads.html">Google Ads</a>
+          <a href="services-marketing-analytics.html">Marketing Analytics</a>
+          <a href="services-marketing-strategy.html">Marketing Strategy</a>
+          <a href="services-consultation.html">1:1 Consultation</a>
+        </div>
+      </div>
+      <a href="product.html" class="active">Product</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="newsletter-free.html">Free Newsletter</a>
+          <a href="newsletter-signal.html">Signal</a>
+        </div>
+      </div>
+      <a href="case-studies.html">Case Study</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-cta-mobile">Let's Talk</a>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="products-hero" id="products-hero">
+    <div class="container">
+      <h1>Products</h1>
+      <p>Practical tools and templates to help you build better marketing systems.</p>
+    </div>
+  </section>
+
+  <!-- ========== CONTROL BAR ========== -->
+  <section class="control-section">
+    <div class="container">
+      <div class="control-bar">
+        <div class="search-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" id="search-input" placeholder="Search products..." autocomplete="off" />
+        </div>
+        <button class="control-btn" id="filter-btn" aria-label="Open filters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
+          Filters
+        </button>
+
+        <span class="results-count" id="results-count">Showing 6 products</span>
+      </div>
+      <div class="active-chips" id="active-chips"></div>
+    </div>
+  </section>
+
+  <!-- ========== FILTER DRAWER ========== -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="filter-drawer" id="filter-drawer" role="dialog" aria-label="Filter Products">
+    <div class="drawer-header">
+      <span class="drawer-title">Filter Products</span>
+      <button class="drawer-close" id="drawer-close" aria-label="Close filters">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <!-- Category -->
+      <div class="drawer-group">
+        <div class="drawer-group-title">Category</div>
+        <label class="drawer-option"><input type="checkbox" name="category" value="playbook" /><span class="drawer-option-label">Playbooks</span></label>
+        <label class="drawer-option"><input type="checkbox" name="category" value="template" /><span class="drawer-option-label">Templates</span></label>
+        <label class="drawer-option"><input type="checkbox" name="category" value="tool" /><span class="drawer-option-label">Tools</span></label>
+        <label class="drawer-option"><input type="checkbox" name="category" value="framework" /><span class="drawer-option-label">Frameworks</span></label>
+        <label class="drawer-option"><input type="checkbox" name="category" value="guide" /><span class="drawer-option-label">Guides</span></label>
+        <label class="drawer-option"><input type="checkbox" name="category" value="spreadsheet" /><span class="drawer-option-label">Spreadsheets</span></label>
+      </div>
+      <!-- Topic -->
+      <div class="drawer-group">
+        <div class="drawer-group-title">Topic</div>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="marketing-systems" /><span class="drawer-option-label">Marketing Systems</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="meta-marketing" /><span class="drawer-option-label">Meta Marketing</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="google-ads" /><span class="drawer-option-label">Google Ads</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="marketing-analytics" /><span class="drawer-option-label">Marketing Analytics</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="ai-automation" /><span class="drawer-option-label">AI &amp; Automation</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="strategy" /><span class="drawer-option-label">Strategy</span></label>
+        <label class="drawer-option"><input type="checkbox" name="topic" value="business-growth" /><span class="drawer-option-label">Business Growth</span></label>
+      </div>
+      <!-- Price -->
+      <div class="drawer-group">
+        <div class="drawer-group-title">Price</div>
+        <label class="drawer-option"><input type="radio" name="price" value="all" checked /><span class="drawer-option-label">All</span></label>
+        <label class="drawer-option"><input type="radio" name="price" value="free" /><span class="drawer-option-label">Free</span></label>
+        <label class="drawer-option"><input type="radio" name="price" value="paid" /><span class="drawer-option-label">Paid</span></label>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="drawer-clear" id="drawer-clear">Clear Filters</button>
+      <button class="drawer-apply" id="drawer-apply">Show 6 Products</button>
+    </div>
+  </aside>
+
+  <!-- ========== PRODUCT GRID ========== -->
+  <section class="products-section">
+    <div class="container">
+      <div class="product-grid" id="product-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card reveal" data-category="playbook" data-topic="marketing-systems,strategy,business-growth" data-price="paid" data-price-value="29" data-date="2026-06-01">
+          <div class="product-card-thumb">
+            <a href="product-sme-playbook.html"><img src="images/product-playbook.png" alt="SME Marketing Systems Playbook" loading="lazy" /></a>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Playbook</span>
+            <h3 class="product-card-title"><a href="product-sme-playbook.html" style="color: inherit; text-decoration: none;">SME Marketing Systems Playbook</a></h3>
+            <p class="product-card-desc">A step-by-step guide to build structured, measurable marketing systems for your business.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price">$29</span>
+            <a href="product-sme-playbook.html" class="product-btn">View Details</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card reveal" data-category="template" data-topic="meta-marketing,marketing-analytics" data-price="paid" data-price-value="19" data-date="2026-05-15">
+          <div class="product-card-thumb">
+            <img src="images/product-ads-tracker.png" alt="Meta Ads Planner &amp; Tracker" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Template</span>
+            <h3 class="product-card-title">Meta Ads Planner &amp; Tracker</h3>
+            <p class="product-card-desc">Track budgets, creative variations, and performance metrics in one streamlined workspace.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price">$19</span>
+            <a href="#" class="product-btn">Buy Now</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card reveal" data-category="tool" data-topic="marketing-analytics,business-growth" data-price="free" data-price-value="0" data-date="2026-05-01">
+          <div class="product-card-thumb">
+            <img src="images/product-cohort-sheet.png" alt="E-commerce Cohort Spreadsheet" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Tool</span>
+            <h3 class="product-card-title">E-commerce Cohort Spreadsheet</h3>
+            <p class="product-card-desc">Understand customer lifetime value with automated cohort retention tables from your sales data.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price product-price-free">Free</span>
+            <a href="#" class="product-btn product-btn-secondary">Download</a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card reveal" data-category="template" data-topic="marketing-systems,strategy" data-price="paid" data-price-value="15" data-date="2026-04-20">
+          <div class="product-card-thumb">
+            <img src="images/product-email-templates.png" alt="Email Marketing Template Pack" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Template</span>
+            <h3 class="product-card-title">Email Marketing Template Pack</h3>
+            <p class="product-card-desc">Ready-to-use email sequences for onboarding, nurture campaigns, and re-engagement flows.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price">$15</span>
+            <a href="#" class="product-btn">Buy Now</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card reveal" data-category="tool" data-topic="marketing-systems,ai-automation" data-price="free" data-price-value="0" data-date="2026-04-01">
+          <div class="product-card-thumb">
+            <img src="images/product-social-kit.png" alt="Social Media Content Calendar" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Tool</span>
+            <h3 class="product-card-title">Social Media Content Calendar</h3>
+            <p class="product-card-desc">Plan, schedule, and organize your content pipeline with this plug-and-play calendar system.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price product-price-free">Free</span>
+            <a href="#" class="product-btn product-btn-secondary">Download</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card reveal" data-category="playbook" data-topic="marketing-analytics,strategy" data-price="paid" data-price-value="24" data-date="2026-03-15">
+          <div class="product-card-thumb">
+            <img src="images/product-analytics-dash.png" alt="Marketing Analytics Dashboard" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-meta">Playbook</span>
+            <h3 class="product-card-title">Marketing Analytics Dashboard</h3>
+            <p class="product-card-desc">Visualize your marketing KPIs with pre-built dashboards for reporting and decision-making.</p>
+          </div>
+          <div class="product-card-footer">
+            <span class="product-price">$24</span>
+            <a href="#" class="product-btn">Buy Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo-full">Marzanur Rahman</a>
+          <p class="footer-tagline">Helping SMEs Build Better Marketing Systems.</p>
+          <p>I help Bangladeshi SME owners solve marketing and customer conversion challenges through better marketing systems.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Content</h4>
+          <ul>
+            <li><a href="newsletter-free.html">Newsletter</a></li>
+            <li><a href="blog.html">Articles</a></li>
+            <li><a href="services-consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="mailto:hello@marzanurrahman.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Marzanur Rahman.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // --- Header scroll shadow ---
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // --- Mobile navigation toggle ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navMobile = document.getElementById('nav-mobile');
+
+    navToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navMobile.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-mobile a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.classList.remove('active');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    document.querySelectorAll('.dropdown-toggle-mobile').forEach(function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('active');
+      });
+    });
+
+    // ===== PRODUCT DISCOVERY SYSTEM =====
+
+    // --- Elements ---
+    var searchInput = document.getElementById('search-input');
+    var filterBtn = document.getElementById('filter-btn');
+    var resultsCount = document.getElementById('results-count');
+    var activeChipsEl = document.getElementById('active-chips');
+    var drawerOverlay = document.getElementById('drawer-overlay');
+    var filterDrawer = document.getElementById('filter-drawer');
+    var drawerClose = document.getElementById('drawer-close');
+    var drawerClear = document.getElementById('drawer-clear');
+    var drawerApply = document.getElementById('drawer-apply');
+    var productGrid = document.getElementById('product-grid');
+    var productCards = Array.from(document.querySelectorAll('.product-card'));
+
+    // --- Label maps for display ---
+    var labelMap = {
+      'playbook': 'Playbooks', 'template': 'Templates', 'tool': 'Tools',
+      'framework': 'Frameworks', 'guide': 'Guides', 'spreadsheet': 'Spreadsheets',
+      'marketing-systems': 'Marketing Systems', 'meta-marketing': 'Meta Marketing',
+      'google-ads': 'Google Ads', 'marketing-analytics': 'Marketing Analytics',
+      'ai-automation': 'AI & Automation', 'strategy': 'Strategy',
+      'business-growth': 'Business Growth',
+      'free': 'Free', 'paid': 'Paid'
+    };
+
+    // --- State ---
+    var state = {
+      search: '',
+      categories: [],
+      topics: [],
+      price: 'all',
+      sort: 'newest'
+    };
+
+    // --- Drawer open / close ---
+    function openDrawer() {
+      syncDrawerToState();
+      filterDrawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      filterDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    filterBtn.addEventListener('click', openDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && filterDrawer.classList.contains('open')) closeDrawer();
+    });
+
+    // --- Sync drawer checkboxes/radios to state ---
+    function syncDrawerToState() {
+      document.querySelectorAll('input[name="category"]').forEach(function (cb) {
+        cb.checked = state.categories.indexOf(cb.value) > -1;
+      });
+      document.querySelectorAll('input[name="topic"]').forEach(function (cb) {
+        cb.checked = state.topics.indexOf(cb.value) > -1;
+      });
+      document.querySelectorAll('input[name="price"]').forEach(function (r) {
+        r.checked = r.value === state.price;
+      });
+      updateDrawerCount();
+    }
+
+    // --- Read drawer state ---
+    function readDrawerState() {
+      state.categories = [];
+      document.querySelectorAll('input[name="category"]:checked').forEach(function (cb) {
+        state.categories.push(cb.value);
+      });
+      state.topics = [];
+      document.querySelectorAll('input[name="topic"]:checked').forEach(function (cb) {
+        state.topics.push(cb.value);
+      });
+      var priceRadio = document.querySelector('input[name="price"]:checked');
+      state.price = priceRadio ? priceRadio.value : 'all';
+    }
+
+    // --- Update drawer apply button count ---
+    function updateDrawerCount() {
+      readDrawerState();
+      var count = countMatching();
+      drawerApply.textContent = count === 1 ? 'Show 1 Product' : 'Show ' + count + ' Products';
+    }
+
+    // Listen to every change inside the drawer to update count
+    filterDrawer.querySelectorAll('input').forEach(function (inp) {
+      inp.addEventListener('change', updateDrawerCount);
+    });
+
+    // --- Apply filters from drawer ---
+    drawerApply.addEventListener('click', function () {
+      readDrawerState();
+      applyAll();
+      closeDrawer();
+    });
+
+    // --- Clear filters from drawer ---
+    drawerClear.addEventListener('click', function () {
+      document.querySelectorAll('input[name="category"]').forEach(function (cb) { cb.checked = false; });
+      document.querySelectorAll('input[name="topic"]').forEach(function (cb) { cb.checked = false; });
+      document.querySelector('input[name="price"][value="all"]').checked = true;
+      updateDrawerCount();
+    });
+
+    // --- Search ---
+    var searchTimeout;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(function () {
+        state.search = searchInput.value.trim().toLowerCase();
+        applyAll();
+      }, 200);
+    });
+
+
+
+    // --- Count matching products (without actually showing/hiding) ---
+    function countMatching() {
+      var count = 0;
+      productCards.forEach(function (card) {
+        if (matchesFilters(card)) count++;
+      });
+      return count;
+    }
+
+    // --- Check if a card matches current filters ---
+    function matchesFilters(card) {
+      // Search
+      if (state.search) {
+        var title = (card.querySelector('.product-card-title') || {}).textContent || '';
+        var desc = (card.querySelector('.product-card-desc') || {}).textContent || '';
+        var meta = (card.querySelector('.product-card-meta') || {}).textContent || '';
+        var hay = (title + ' ' + desc + ' ' + meta).toLowerCase();
+        if (hay.indexOf(state.search) === -1) return false;
+      }
+      // Category
+      if (state.categories.length > 0) {
+        if (state.categories.indexOf(card.getAttribute('data-category')) === -1) return false;
+      }
+      // Topic
+      if (state.topics.length > 0) {
+        var cardTopics = (card.getAttribute('data-topic') || '').split(',');
+        var hasMatch = false;
+        for (var i = 0; i < state.topics.length; i++) {
+          if (cardTopics.indexOf(state.topics[i]) > -1) { hasMatch = true; break; }
+        }
+        if (!hasMatch) return false;
+      }
+      // Price
+      if (state.price !== 'all') {
+        if (card.getAttribute('data-price') !== state.price) return false;
+      }
+      return true;
+    }
+
+    // --- Sort products ---
+    function sortProducts() {
+      var sorted = productCards.slice();
+      sorted.sort(function (a, b) {
+        switch (state.sort) {
+          case 'newest':
+            return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
+          case 'oldest':
+            return (a.getAttribute('data-date') || '').localeCompare(b.getAttribute('data-date') || '');
+          case 'price-low':
+            return parseFloat(a.getAttribute('data-price-value') || 0) - parseFloat(b.getAttribute('data-price-value') || 0);
+          case 'price-high':
+            return parseFloat(b.getAttribute('data-price-value') || 0) - parseFloat(a.getAttribute('data-price-value') || 0);
+          case 'free-first':
+            var af = a.getAttribute('data-price') === 'free' ? 0 : 1;
+            var bf = b.getAttribute('data-price') === 'free' ? 0 : 1;
+            return af - bf;
+          default:
+            return 0;
+        }
+      });
+      sorted.forEach(function (card) { productGrid.appendChild(card); });
+    }
+
+    // --- Apply all (filter + sort + chips + count) ---
+    function applyAll() {
+      var visibleCount = 0;
+
+      productCards.forEach(function (card) {
+        if (matchesFilters(card)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      sortProducts();
+      updateResultsCount(visibleCount);
+      renderChips();
+      updateFilterBtnState();
+      renderEmptyState(visibleCount);
+    }
+
+    function updateResultsCount(count) {
+      resultsCount.textContent = count === 1 ? 'Showing 1 product' : 'Showing ' + count + ' products';
+    }
+
+    function updateFilterBtnState() {
+      var hasFilters = state.categories.length > 0 || state.topics.length > 0 || state.price !== 'all';
+      filterBtn.classList.toggle('has-active', hasFilters);
+    }
+
+    // --- Active filter chips ---
+    function renderChips() {
+      activeChipsEl.innerHTML = '';
+      var hasAny = false;
+
+      state.categories.forEach(function (val) {
+        activeChipsEl.appendChild(makeChip(labelMap[val] || val, 'category', val));
+        hasAny = true;
+      });
+      state.topics.forEach(function (val) {
+        activeChipsEl.appendChild(makeChip(labelMap[val] || val, 'topic', val));
+        hasAny = true;
+      });
+      if (state.price !== 'all') {
+        activeChipsEl.appendChild(makeChip(labelMap[state.price] || state.price, 'price', state.price));
+        hasAny = true;
+      }
+
+      if (hasAny) {
+        var clearBtn = document.createElement('button');
+        clearBtn.className = 'chips-clear';
+        clearBtn.textContent = 'Clear All';
+        clearBtn.addEventListener('click', function () {
+          state.categories = [];
+          state.topics = [];
+          state.price = 'all';
+          applyAll();
+        });
+        activeChipsEl.appendChild(clearBtn);
+      }
+    }
+
+    function makeChip(label, type, value) {
+      var chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.innerHTML = label + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      chip.addEventListener('click', function () {
+        if (type === 'category') state.categories = state.categories.filter(function (v) { return v !== value; });
+        if (type === 'topic') state.topics = state.topics.filter(function (v) { return v !== value; });
+        if (type === 'price') state.price = 'all';
+        applyAll();
+      });
+      return chip;
+    }
+
+    // --- Empty state ---
+    function renderEmptyState(count) {
+      var existing = document.querySelector('.empty-state');
+      if (existing) existing.remove();
+      if (count === 0) {
+        var el = document.createElement('div');
+        el.className = 'empty-state';
+        el.innerHTML = '<div class="empty-state-icon">📦</div>' +
+          '<p>No products match your filters.</p>' +
+          '<button class="empty-state-reset">Clear all filters</button>';
+        el.querySelector('.empty-state-reset').addEventListener('click', function () {
+          state.categories = [];
+          state.topics = [];
+          state.price = 'all';
+          state.search = '';
+          searchInput.value = '';
+          applyAll();
+        });
+        productGrid.appendChild(el);
+      }
+    }
+
+    // --- Scroll reveal ---
+    var revealElements = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  </script>
+
+</body>
+</html>

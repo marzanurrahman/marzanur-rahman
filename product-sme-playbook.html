@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SME Marketing Systems Playbook — Marzanur Rahman</title>
+  <meta name="description" content="A comprehensive digital guide and Notion workspace to help SME owners construct predictable, high-converting marketing systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ========== SINGLE PRODUCT PAGE SCOPED STYLES ========== */
+
+    /* --- General Section Rhythm --- */
+    .product-section {
+      padding: 88px 0;
+      background-color: var(--bg-alt);
+    }
+    .product-section.bg-light {
+      background-color: var(--bg-primary);
+    }
+    .product-section.bg-warm-subtle {
+      background-color: #FDFDFB;
+    }
+    .section-headline {
+      font-size: 32px;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .editorial-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* --- Hero Layout --- */
+    .product-hero {
+      padding: calc(88px + 80px) 0 80px;
+      background-color: var(--bg-primary);
+    }
+    .hero-split {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 7%;
+    }
+    .hero-visual {
+      flex: 0 0 48%;
+    }
+    .hero-details {
+      flex: 0 0 45%;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-mockup {
+      aspect-ratio: 4 / 3;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .product-mockup img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 16px 48px rgba(22, 33, 62, 0.1);
+    }
+    .product-tag {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .product-title {
+      font-size: 42px;
+      line-height: 1.25;
+      color: var(--text-heading);
+      margin-bottom: 24px;
+    }
+    .product-price-section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .detail-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      line-height: 1;
+    }
+    .detail-badge-subtle {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .product-intro {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-body);
+      margin-bottom: 40px;
+      max-width: 90%;
+    }
+    .buy-actions {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+    }
+    .btn-buy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 14px 32px;
+      min-width: 190px;
+      border: 2px solid var(--text-heading);
+      border-radius: var(--btn-radius);
+      box-shadow: 3px 3px 0 var(--text-heading);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-buy:hover {
+      background-color: var(--accent-hover);
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--text-heading);
+    }
+
+    /* --- Who This Is For --- */
+    .who-intro {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-top: 24px;
+      margin-bottom: 48px;
+    }
+    .who-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+    }
+    .who-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .who-check {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    .who-item span:not(.who-check) {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    /* --- What You'll Learn --- */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px 48px;
+      margin-top: 48px;
+    }
+    .learn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      overflow: visible;
+    }
+    .learn-num {
+      font-family: var(--font-heading);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .learn-item h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      white-space: normal;
+      overflow: visible;
+    }
+    .learn-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* --- Inside the Playbook --- */
+    .chapter-list {
+      margin-top: 48px;
+      border-top: 1px solid rgba(22, 33, 62, 0.06);
+    }
+    .chapter-item {
+      display: flex;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(22, 33, 62, 0.06);
+      align-items: flex-start;
+    }
+    .chapter-num-large {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      color: rgba(249, 115, 22, 0.25);
+      font-weight: 900;
+      line-height: 1;
+      width: 50px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .chapter-content {
+      flex: 1;
+    }
+    .chapter-content h3 {
+      font-size: 19px;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .chapter-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* --- Format & Access --- */
+    .format-band {
+      display: flex;
+      align-items: stretch;
+      margin-top: 48px;
+      border: 1px solid rgba(22, 33, 62, 0.08);
+      background-color: #FFFFFF;
+      border-radius: 4px;
+    }
+    .format-band-item {
+      flex: 1;
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .format-band-divider {
+      width: 1px;
+      background-color: rgba(22, 33, 62, 0.08);
+    }
+    .format-band-item h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .format-band-item p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* --- FAQs Accordion --- */
+    .faq-accordion-list {
+      max-width: 880px;
+      margin: 48px auto 0;
+    }
+    .faq-accordion-item {
+      border-bottom: 1px solid rgba(22, 33, 62, 0.08);
+    }
+    .faq-accordion-item:last-child {
+      border-bottom: none;
+    }
+    .faq-accordion-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-heading);
+      outline: none;
+    }
+    .faq-accordion-header h3 {
+      font-size: 17.5px;
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 600;
+      transition: color var(--transition);
+      line-height: 1.4;
+      padding-right: 24px;
+    }
+    .faq-accordion-header:hover h3 {
+      color: var(--accent);
+    }
+    .faq-icon {
+      transition: transform var(--transition);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .faq-accordion-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+    .faq-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow) cubic-bezier(0.16, 1, 0.3, 1), padding var(--transition-slow) ease-out;
+    }
+    .faq-accordion-item.active .faq-accordion-content {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+    .faq-accordion-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+      padding-right: 48px;
+    }
+
+    /* --- Similar Products Carousel --- */
+    .similar-products-section {
+      padding: 88px 0 104px 0;
+      background-color: var(--bg-alt);
+      border-top: 1px solid rgba(22, 33, 62, 0.06);
+    }
+    .similar-products-header {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .similar-products-header h2 {
+      font-size: 32px;
+      margin: 0;
+      color: var(--text-heading);
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-card {
+      flex: 0 0 calc((100% - 64px) / 3);
+      min-width: 280px;
+      scroll-snap-align: start;
+      background: var(--bg-primary);
+      border: 1px solid rgba(22, 33, 62, 0.08);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      height: 100%;
+    }
+    .carousel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(22, 33, 62, 0.05);
+    }
+    .carousel-card-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+    }
+    .carousel-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .carousel-card-meta {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .carousel-card h3 {
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      color: var(--text-heading);
+    }
+    .carousel-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+      flex: 1;
+    }
+    .carousel-card-footer {
+      padding: 20px 24px;
+      border-top: 1px solid rgba(22, 33, 62, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-primary);
+      margin-top: auto;
+    }
+    .carousel-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+    .carousel-price.free {
+      color: var(--accent);
+    }
+    .carousel-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 16px;
+      border: 1.5px solid var(--text-heading);
+      background-color: var(--accent);
+      color: #ffffff;
+      border-radius: var(--btn-radius);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .carousel-btn:hover {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+    }
+    .carousel-btn.secondary {
+      background-color: transparent;
+      color: var(--text-heading);
+    }
+    .carousel-btn.secondary:hover {
+      background-color: var(--bg-warm);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero-split {
+        gap: 5%;
+      }
+      .carousel-card {
+        flex: 0 0 calc((100% - 32px) / 2);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-hero {
+        padding-top: calc(72px + 48px);
+      }
+      .hero-split {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .hero-visual, .hero-details {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+      .product-title {
+        font-size: 32px;
+      }
+      .btn-buy {
+        width: 100%;
+      }
+      .who-list, .learn-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .format-band {
+        flex-direction: column;
+      }
+      .format-band-divider {
+        width: 100%;
+        height: 1px;
+      }
+      .section-headline {
+        font-size: 26px;
+      }
+      .product-section {
+        padding: 64px 0;
+      }
+    }
+
+    /* ========== CHECKOUT MODAL ========== */
+    .co-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 33, 62, 0.45);
+      z-index: 3000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-slow), visibility var(--transition-slow);
+    }
+    .co-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .co-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.97);
+      width: 100%;
+      max-width: 580px;
+      max-height: calc(100dvh - 48px);
+      background: var(--bg-alt);
+      border-radius: 4px;
+      box-shadow: 0 24px 64px rgba(22, 33, 62, 0.18);
+      z-index: 3001;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    }
+    .co-modal.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .co-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .co-modal-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .co-modal-close:hover {
+      color: var(--text-heading);
+    }
+    .co-modal-close svg {
+      width: 20px;
+      height: 20px;
+    }
+    .co-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4);
+    }
+
+    /* Step indicator */
+    .co-steps {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .co-step-item {
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color var(--transition);
+    }
+    .co-step-item.active {
+      color: var(--text-heading);
+    }
+    .co-step-num {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .co-step-sep {
+      width: 24px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Section titles */
+    .co-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--space-1);
+    }
+    .co-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.3;
+      margin-bottom: var(--space-3);
+    }
+    .co-section-title {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-heading);
+      margin-bottom: var(--space-2);
+      padding-bottom: var(--space-1);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Product summary */
+    .co-product-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) 0;
+    }
+    .co-product-thumb {
+      width: 64px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .co-product-info {
+      flex: 1;
+    }
+    .co-product-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .co-product-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .co-product-price {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-heading);
+      flex-shrink: 0;
+    }
+
+    /* Coupon */
+    .co-coupon {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border);
+    }
+    .co-coupon-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: var(--space-1);
+    }
+    .co-coupon-row {
+      display: flex;
+      gap: var(--space-1);
+    }
+    .co-coupon-input {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-body);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .co-coupon-input:focus {
+      border-color: var(--accent);
+    }
+    .co-coupon-apply {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      background: var(--text-heading);
+      color: #FFFFFF;
+      border: 1px solid var(--text-heading);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color var(--transition);
+      white-space: nowrap;
+    }
+    .co-coupon-apply:hover {
+      background: #1e2f52;
+    }
+    .co-coupon-msg {
+      font-size: 13px;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    .co-coupon-msg.success {
+      color: #16a34a;
+    }
+    .co-coupon-msg.error {
+      color: #dc2626;
+    }
+
+    /* Totals */
+    .co-totals {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border);
+    }
+    .co-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      font-size: 14px;
+      color: var(--text-body);
+    }
+    .co-total-row.final {
+      padding-top: var(--space-1);
+      margin-top: var(--space-1);
+      border-top: 1px solid var(--border);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+    .co-total-row.final .co-total-amount {
+      font-family: var(--font-heading);
+      font-size: 20px;
+    }
+
+    /* Modal footer / actions */
+    .co-modal-footer {
+      padding: var(--space-3) var(--space-4);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .co-btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border: 2px solid var(--text-heading);
+      border-radius: var(--btn-radius);
+      box-shadow: 3px 3px 0 var(--text-heading);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .co-btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--text-heading);
+    }
+    .co-btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: 3px 3px 0 var(--text-heading);
+    }
+    .co-btn-primary:disabled:hover {
+      background-color: var(--accent);
+      transform: none;
+    }
+
+    /* Back link */
+    .co-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: var(--space-3);
+      transition: color var(--transition);
+    }
+    .co-back:hover {
+      color: var(--text-heading);
+    }
+
+    /* Form fields */
+    .co-form-group {
+      margin-bottom: var(--space-2);
+    }
+    .co-form-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+    }
+    .co-form-input {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-body);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .co-form-input:focus {
+      border-color: var(--accent);
+    }
+    .co-form-input.error {
+      border-color: #dc2626;
+    }
+    .co-form-error {
+      font-size: 12.5px;
+      color: #dc2626;
+      margin-top: 4px;
+      display: none;
+    }
+    .co-form-error.visible {
+      display: block;
+    }
+
+    /* Payment method section */
+    .co-payment-section {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border);
+    }
+    .co-payment-placeholder {
+      padding: var(--space-3);
+      background: var(--bg-primary);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Terms checkbox */
+    .co-terms {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border);
+    }
+    .co-terms-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .co-terms-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .co-terms-label a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .co-terms-label a:hover {
+      color: var(--accent-hover);
+    }
+    .co-terms-error {
+      font-size: 12.5px;
+      color: #dc2626;
+      margin-top: 4px;
+      margin-left: 28px;
+      display: none;
+    }
+    .co-terms-error.visible {
+      display: block;
+    }
+
+    /* Final compact summary */
+    .co-final-summary {
+      margin-top: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .co-final-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-body);
+      padding: 4px 0;
+    }
+    .co-final-row.total {
+      font-weight: 700;
+      color: var(--text-heading);
+      font-size: 15px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+      padding-top: var(--space-1);
+    }
+    .co-final-row.total .co-final-amount {
+      font-family: var(--font-heading);
+      font-size: 18px;
+    }
+
+    /* Processing message */
+    .co-processing {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: var(--space-1);
+      display: none;
+    }
+    .co-processing.visible {
+      display: block;
+    }
+
+    /* Payment error */
+    .co-payment-error {
+      font-size: 13px;
+      color: #dc2626;
+      text-align: center;
+      margin-top: var(--space-1);
+      display: none;
+    }
+    .co-payment-error.visible {
+      display: block;
+    }
+
+    /* Thank-you step */
+    .co-thankyou {
+      text-align: center;
+      padding: var(--space-4) 0 var(--space-2);
+    }
+    .co-thankyou-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-3);
+    }
+    .co-thankyou-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #FFFFFF;
+    }
+    .co-thankyou .co-label {
+      margin-bottom: var(--space-1);
+    }
+    .co-thankyou .co-title {
+      margin-bottom: var(--space-3);
+    }
+    .co-thankyou-copy {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-body);
+      max-width: 420px;
+      margin: 0 auto var(--space-4);
+      text-align: left;
+    }
+    .co-thankyou-copy p {
+      margin-bottom: var(--space-2);
+    }
+    .co-thankyou-copy p:last-child {
+      margin-bottom: 0;
+    }
+    .co-btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background-color: #25D366;
+      color: #FFFFFF;
+      border: 2px solid #1da851;
+      border-radius: var(--btn-radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      margin-bottom: var(--space-2);
+    }
+    .co-btn-whatsapp:hover {
+      background-color: #1da851;
+      color: #FFFFFF;
+    }
+    .co-btn-whatsapp svg {
+      width: 18px;
+      height: 18px;
+    }
+    .co-btn-browse {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 0 auto;
+      padding: var(--space-1) var(--space-2);
+      transition: color var(--transition);
+    }
+    .co-btn-browse:hover {
+      color: var(--text-heading);
+    }
+
+    /* Step visibility */
+    .co-step { display: none; }
+    .co-step.active { display: block; }
+
+    /* Hide elements */
+    .co-hidden { display: none !important; }
+
+    /* ---- Checkout Modal Responsive ---- */
+    @media (max-width: 768px) {
+      .co-modal {
+        max-width: calc(100% - 32px);
+        max-height: calc(100dvh - 32px);
+      }
+      .co-modal-body {
+        padding: var(--space-3);
+      }
+      .co-modal-header {
+        padding: var(--space-2) var(--space-3);
+      }
+      .co-modal-footer {
+        padding: var(--space-2) var(--space-3);
+      }
+      .co-title {
+        font-size: 22px;
+      }
+    }
+    @media (max-width: 430px) {
+      .co-modal {
+        max-width: calc(100% - 24px);
+      }
+      .co-coupon-row {
+        flex-direction: column;
+      }
+      .co-coupon-apply {
+        width: 100%;
+        text-align: center;
+      }
+      .co-product-thumb {
+        width: 52px;
+        height: 40px;
+      }
+      .co-steps {
+        gap: var(--space-2);
+      }
+      .co-step-item {
+        font-size: 11.5px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">MR</a>
+
+      <nav class="nav-desktop" id="nav-desktop">
+        <a href="index.html">Home</a>
+        <div class="has-dropdown">
+          <a href="#">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="services-meta-marketing.html">Meta Marketing</a>
+            <a href="services-google-ads.html">Google Ads</a>
+            <a href="services-marketing-analytics.html">Marketing Analytics</a>
+            <a href="services-marketing-strategy.html">Marketing Strategy</a>
+            <a href="services-consultation.html">1:1 Consultation</a>
+          </div>
+        </div>
+        <a href="product.html" class="active">Product</a>
+        <div class="has-dropdown">
+          <a href="#">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="newsletter-free.html">Free Newsletter</a>
+            <a href="newsletter-signal.html">Signal</a>
+          </div>
+        </div>
+        <a href="case-studies.html">Case Study</a>
+        <div class="has-dropdown">
+          <a href="#">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-cta">Let's Talk</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="services-meta-marketing.html">Meta Marketing</a>
+          <a href="services-google-ads.html">Google Ads</a>
+          <a href="services-marketing-analytics.html">Marketing Analytics</a>
+          <a href="services-marketing-strategy.html">Marketing Strategy</a>
+          <a href="services-consultation.html">1:1 Consultation</a>
+        </div>
+      </div>
+      <a href="product.html" class="active">Product</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="newsletter-free.html">Free Newsletter</a>
+          <a href="newsletter-signal.html">Signal</a>
+        </div>
+      </div>
+      <a href="case-studies.html">Case Study</a>
+      <div class="has-dropdown-mobile">
+        <button class="dropdown-toggle-mobile">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown-menu-mobile">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-cta-mobile">Let's Talk</a>
+    </nav>
+  </header>
+
+    <!-- ========== PRODUCT HERO ========== -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="hero-split">
+        <div class="hero-visual reveal">
+          <div class="product-mockup">
+            <img src="images/product-playbook.png" alt="SME Marketing Systems Playbook mockup" />
+          </div>
+        </div>
+        <div class="hero-details reveal reveal-delay-1">
+          <span class="product-tag">PLAYBOOK</span>
+          <h1 class="product-title">SME Marketing Systems Playbook</h1>
+          
+          <div class="product-price-section">
+            <span class="detail-price">$29</span>
+            <span class="detail-badge-subtle">One Time Purchase</span>
+          </div>
+
+          <p class="product-intro">
+            A practical guide for SME owners who want to understand, structure and improve how their marketing works as a connected system instead of relying on isolated campaigns.
+          </p>
+
+          <div class="buy-actions">
+            <button class="btn-buy" id="btn-buy-top">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHO THIS IS FOR ========== -->
+  <section class="product-section">
+    <div class="container editorial-container">
+      <h2 class="section-headline reveal">Who This Is For</h2>
+      <p class="who-intro reveal reveal-delay-1">
+        This playbook is designed for SME owners and marketing decision makers who are running marketing activities but lack a clear structure connecting acquisition, customer data, follow up and measurement.
+      </p>
+      <div class="who-list reveal reveal-delay-2">
+        <div class="who-item">
+          <span class="who-check"></span>
+          <span>Running marketing across multiple channels without a clear system</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check"></span>
+          <span>Spending on campaigns without understanding how activities connect</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check"></span>
+          <span>Struggling to organize leads, follow up and customer information</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check"></span>
+          <span>Wanting a more structured way to plan and evaluate marketing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT YOU'LL LEARN ========== -->
+  <section class="product-section bg-light">
+    <div class="container editorial-container">
+      <h2 class="section-headline reveal">What You'll Learn</h2>
+      <div class="learn-grid reveal reveal-delay-1">
+        <div class="learn-item">
+          <span class="learn-num">01</span>
+          <h3>See Marketing as a System</h3>
+          <p>Understand how marketing activities connect instead of treating every channel or campaign separately.</p>
+        </div>
+        <div class="learn-item">
+          <span class="learn-num">02</span>
+          <h3>Identify Structural Gaps</h3>
+          <p>Recognize where disconnected processes, unclear ownership or missing information create problems.</p>
+        </div>
+        <div class="learn-item">
+          <span class="learn-num">03</span>
+          <h3>Connect Acquisition and Follow Up</h3>
+          <p>Understand the relationship between attracting attention, capturing leads and continuing the customer journey.</p>
+        </div>
+        <div class="learn-item">
+          <span class="learn-num">04</span>
+          <h3>Build a Repeatable Marketing Process</h3>
+          <p>Learn how clearer processes, measurement and continuous improvement create a more structured marketing operation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSIDE THE PLAYBOOK ========== -->
+  <section class="product-section">
+    <div class="container editorial-container">
+      <h2 class="section-headline reveal">Inside the Playbook</h2>
+      
+      <div class="chapter-list reveal reveal-delay-1">
+        <div class="chapter-item">
+          <div class="chapter-num-large">01</div>
+          <div class="chapter-content">
+            <h3>Understanding Marketing Systems</h3>
+            <p>What a marketing system is, why isolated marketing activities create inconsistency and how connected processes improve visibility.</p>
+          </div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-num-large">02</div>
+          <div class="chapter-content">
+            <h3>Mapping the Customer Journey</h3>
+            <p>Understanding how people move from awareness to enquiry, follow up and customer conversion.</p>
+          </div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-num-large">03</div>
+          <div class="chapter-content">
+            <h3>Connecting Marketing Activities</h3>
+            <p>How channels, campaigns, customer information and follow up processes should support one another.</p>
+          </div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-num-large">04</div>
+          <div class="chapter-content">
+            <h3>Measurement and Feedback</h3>
+            <p>How tracking and feedback help identify problems and support better marketing decisions.</p>
+          </div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-num-large">05</div>
+          <div class="chapter-content">
+            <h3>Building Repeatable Processes</h3>
+            <p>Turning recurring marketing activities into clearer documented processes that can be reviewed and improved.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FORMAT & ACCESS ========== -->
+  <section class="product-section bg-warm-subtle">
+    <div class="container editorial-container">
+      <h2 class="section-headline reveal">Format &amp; Access</h2>
+      <div class="format-band reveal reveal-delay-1">
+        <div class="format-band-item">
+          <h3>Digital Playbook</h3>
+          <p>Designed for independent reading and practical application.</p>
+        </div>
+        <div class="format-band-divider"></div>
+        <div class="format-band-item">
+          <h3>One Time Purchase</h3>
+          <p>Purchase the playbook once without a recurring subscription.</p>
+        </div>
+        <div class="format-band-divider"></div>
+        <div class="format-band-item">
+          <h3>Access Information</h3>
+          <p>Final access and delivery details will be presented clearly during purchase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQS ========== -->
+  <section class="product-section">
+    <div class="container">
+      <h2 class="section-headline reveal" style="text-align: center;">Frequently Asked Questions</h2>
+      
+      <div class="faq-accordion-list reveal reveal-delay-1">
+        <div class="faq-accordion-item">
+          <button class="faq-accordion-header">
+            <h3>Is this playbook only for marketers?</h3>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-accordion-content">
+            <p>No. It is primarily designed for SME owners and marketing decision makers who want to understand and structure how their marketing activities work together.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-accordion-header">
+            <h3>Is this a step by step advertising guide?</h3>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-accordion-content">
+            <p>No. The playbook focuses on marketing systems and processes rather than teaching individual advertising platforms step by step.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-accordion-header">
+            <h3>Do I need advanced marketing knowledge?</h3>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-accordion-content">
+            <p>No. The ideas are explained from a business and marketing systems perspective. Some familiarity with basic marketing activities will help, but advanced technical knowledge is not required.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-accordion-header">
+            <h3>Does this guarantee better marketing results?</h3>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-accordion-content">
+            <p>No. The playbook provides frameworks and structured thinking. Business and marketing results depend on execution, market conditions, offer, resources and other factors.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== RELATED PRODUCTS ========== -->
+  <section class="similar-products-section">
+    <div class="container">
+      <div class="similar-products-header reveal">
+        <h2>Related Products</h2>
+      </div>
+      
+      <div class="carousel-container reveal reveal-delay-1">
+        <div class="carousel-track" id="similar-carousel-track">
+          
+          <!-- Related Product 1 -->
+          <div class="carousel-card">
+            <div class="carousel-card-thumb">
+              <img src="images/product-ads-tracker.png" alt="Meta Ads Planner &amp; Tracker" />
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-meta">Template</span>
+              <h3>Meta Ads Planner &amp; Tracker</h3>
+              <p>Track budgets, creative variations, and performance metrics in one streamlined workspace.</p>
+            </div>
+            <div class="carousel-card-footer">
+              <span class="carousel-price">$19</span>
+              <a href="#" class="carousel-btn btn-buy">Buy Now</a>
+            </div>
+          </div>
+
+          <!-- Related Product 2 -->
+          <div class="carousel-card">
+            <div class="carousel-card-thumb">
+              <img src="images/product-email-templates.png" alt="Email Marketing Template Pack" />
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-meta">Template</span>
+              <h3>Email Marketing Template Pack</h3>
+              <p>Ready-to-use email sequences for onboarding, nurture campaigns, and re-engagement flows.</p>
+            </div>
+            <div class="carousel-card-footer">
+              <span class="carousel-price">$15</span>
+              <a href="#" class="carousel-btn btn-buy">Buy Now</a>
+            </div>
+          </div>
+
+          <!-- Related Product 3 -->
+          <div class="carousel-card">
+            <div class="carousel-card-thumb">
+              <img src="images/product-social-kit.png" alt="Social Media Content Calendar" />
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-meta">Tool</span>
+              <h3>Social Media Content Calendar</h3>
+              <p>Plan, schedule, and organize your content pipeline with this plug-and-play calendar system.</p>
+            </div>
+            <div class="carousel-card-footer">
+              <span class="carousel-price free">Free</span>
+              <a href="#" class="carousel-btn secondary btn-buy">Download</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CHECKOUT MODAL ========== -->
+  <div class="co-overlay" id="co-overlay"></div>
+  <div class="co-modal" id="co-modal" role="dialog" aria-label="Checkout">
+    <div class="co-modal-header">
+      <span class="co-label" style="margin-bottom: 0;">Checkout</span>
+      <button class="co-modal-close" id="co-close" aria-label="Close checkout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="co-modal-body">
+
+      <!-- ===== STEP 1: Order Review ===== -->
+      <div class="co-step active" id="co-step-1">
+        <div class="co-steps">
+          <div class="co-step-item active" id="co-ind-1"><span class="co-step-num">01</span> Order Review</div>
+          <div class="co-step-sep"></div>
+          <div class="co-step-item" id="co-ind-2"><span class="co-step-num">02</span> Details &amp; Payment</div>
+        </div>
+
+        <h2 class="co-title">Review Your Order</h2>
+
+        <div class="co-section-title">Product</div>
+        <div class="co-product-row">
+          <img class="co-product-thumb" id="co-thumb" src="images/product-playbook.png" alt="Product thumbnail" />
+          <div class="co-product-info">
+            <div class="co-product-name" id="co-name">SME Marketing Systems Playbook</div>
+            <div class="co-product-meta"><span id="co-type">Digital Playbook</span> · Qty: 1</div>
+          </div>
+          <div class="co-product-price" id="co-item-price">$29</div>
+        </div>
+
+        <div class="co-coupon">
+          <div class="co-coupon-label">Have a coupon?</div>
+          <div class="co-coupon-row">
+            <input type="text" class="co-coupon-input" id="co-coupon-code" placeholder="Enter coupon code" autocomplete="off" />
+            <button class="co-coupon-apply" id="co-coupon-apply">Apply</button>
+          </div>
+          <div class="co-coupon-msg" id="co-coupon-msg"></div>
+        </div>
+
+        <div class="co-totals">
+          <div class="co-total-row">
+            <span>Subtotal</span>
+            <span id="co-subtotal">$29</span>
+          </div>
+          <div class="co-total-row">
+            <span>Discount</span>
+            <span id="co-discount">$0</span>
+          </div>
+          <div class="co-total-row final">
+            <span>Total</span>
+            <span class="co-total-amount" id="co-total">$29</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STEP 2: Details & Payment ===== -->
+      <div class="co-step" id="co-step-2">
+        <button class="co-back" id="co-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back
+        </button>
+
+        <div class="co-steps">
+          <div class="co-step-item" id="co-ind-1b"><span class="co-step-num">01</span> Order Review</div>
+          <div class="co-step-sep"></div>
+          <div class="co-step-item active" id="co-ind-2b"><span class="co-step-num">02</span> Details &amp; Payment</div>
+        </div>
+
+        <h2 class="co-title">Your Details &amp; Payment</h2>
+
+        <div class="co-section-title">Customer Information</div>
+
+        <div class="co-form-group">
+          <label class="co-form-label" for="co-fullname">Full Name</label>
+          <input type="text" class="co-form-input" id="co-fullname" autocomplete="name" />
+          <div class="co-form-error" id="co-err-name">Please enter your full name.</div>
+        </div>
+
+        <div class="co-form-group">
+          <label class="co-form-label" for="co-email">Email Address</label>
+          <input type="email" class="co-form-input" id="co-email" autocomplete="email" />
+          <div class="co-form-error" id="co-err-email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="co-form-group">
+          <label class="co-form-label" for="co-phone">Phone Number</label>
+          <input type="tel" class="co-form-input" id="co-phone" autocomplete="tel" placeholder="+880" />
+          <div class="co-form-error" id="co-err-phone">Please enter a valid phone number.</div>
+        </div>
+
+        <div class="co-payment-section">
+          <div class="co-section-title">Payment Method</div>
+          <div class="co-payment-placeholder" id="co-payment-area">
+            Payment integration will be connected here.<br />
+            No payment method is currently configured.
+          </div>
+          <div class="co-payment-error" id="co-payment-err"></div>
+        </div>
+
+        <div class="co-terms">
+          <label class="co-terms-label">
+            <input type="checkbox" id="co-terms-check" />
+            <span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>.</span>
+          </label>
+          <div class="co-terms-error" id="co-err-terms">You must accept the Terms &amp; Conditions to continue.</div>
+        </div>
+
+        <div class="co-final-summary">
+          <div class="co-final-row">
+            <span>Product</span>
+            <span id="co-final-name">SME Marketing Systems Playbook</span>
+          </div>
+          <div class="co-final-row total">
+            <span>Total</span>
+            <span class="co-final-amount" id="co-final-total">$29</span>
+          </div>
+        </div>
+
+        <div class="co-processing" id="co-processing">Processing your purchase...</div>
+      </div>
+
+      <!-- ===== STEP 3: Thank You ===== -->
+      <div class="co-step" id="co-step-3">
+        <div class="co-thankyou">
+          <div class="co-thankyou-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="co-label">Thank You</div>
+          <h2 class="co-title">Your Purchase Is Confirmed.</h2>
+          <div class="co-thankyou-copy">
+            <p>Thank you for purchasing the <strong>SME Marketing Systems Playbook</strong>.</p>
+            <p>We will send a detailed email to the email address you provided with your product and access instructions.</p>
+            <p>Please allow some time for the email and access details to arrive.</p>
+            <p>If you need help or would like to contact us directly, you can reach us on WhatsApp.</p>
+          </div>
+          <a class="co-btn-whatsapp" id="co-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Contact on WhatsApp
+          </a>
+          <button class="co-btn-browse" id="co-browse">Continue Browsing</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal footer (buttons for step 1 & 2) -->
+    <div class="co-modal-footer" id="co-footer-1">
+      <button class="co-btn-primary" id="co-continue">Continue</button>
+    </div>
+    <div class="co-modal-footer co-hidden" id="co-footer-2">
+      <button class="co-btn-primary" id="co-purchase">Complete Purchase</button>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo-full">Marzanur Rahman</a>
+          <p class="footer-tagline">Helping SMEs Build Better Marketing Systems.</p>
+          <p>I help Bangladeshi SME owners solve marketing and customer conversion challenges through better marketing systems.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Content</h4>
+          <ul>
+            <li><a href="newsletter-free.html">Newsletter</a></li>
+            <li><a href="blog.html">Articles</a></li>
+            <li><a href="services-consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="mailto:hello@marzanurrahman.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Marzanur Rahman.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // --- Header scroll shadow ---
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // --- Mobile navigation toggle ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navMobile = document.getElementById('nav-mobile');
+
+    navToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navMobile.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-mobile a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.classList.remove('active');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // --- Scroll reveal animation ---
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    // --- Checkout System ---
+    (function() {
+      /* ==============================
+         CHECKOUT CONFIGURATION
+         ============================== */
+      const CHECKOUT_CONFIG = {
+        product: {
+          id: 'sme-playbook',
+          name: 'SME Marketing Systems Playbook',
+          type: 'Digital Playbook',
+          image: 'images/product-playbook.png',
+          price: 29,
+          currency: 'USD',
+          deliveryType: 'digital'
+        },
+        // CONFIGURE: Add your business WhatsApp number (e.g. '8801XXXXXXXXX')
+        whatsappNumber: null,
+        // CONFIGURE: Add product delivery/access URL
+        productAccessUrl: null,
+        // CONFIGURE: Coupon validation endpoint URL or async function
+        // Should return { valid: boolean, discountType: 'percentage'|'fixed', discountValue: number }
+        couponValidation: null,
+        // CONFIGURE: Payment provider integration function
+        // Should return a Promise that resolves to { success: boolean, transactionId: string }
+        paymentProvider: null,
+        // CONFIGURE: Email automation webhook URL (POST)
+        emailWebhook: null
+      };
+
+      /* ==============================
+         DOM REFERENCES
+         ============================== */
+      const overlay = document.getElementById('co-overlay');
+      const modal = document.getElementById('co-modal');
+      const closeBtn = document.getElementById('co-close');
+      const step1 = document.getElementById('co-step-1');
+      const step2 = document.getElementById('co-step-2');
+      const step3 = document.getElementById('co-step-3');
+      const footer1 = document.getElementById('co-footer-1');
+      const footer2 = document.getElementById('co-footer-2');
+      const continueBtn = document.getElementById('co-continue');
+      const purchaseBtn = document.getElementById('co-purchase');
+      const backBtn = document.getElementById('co-back');
+      const browseBtn = document.getElementById('co-browse');
+
+      // Coupon
+      const couponInput = document.getElementById('co-coupon-code');
+      const couponApply = document.getElementById('co-coupon-apply');
+      const couponMsg = document.getElementById('co-coupon-msg');
+
+      // Totals
+      const subtotalEl = document.getElementById('co-subtotal');
+      const discountEl = document.getElementById('co-discount');
+      const totalEl = document.getElementById('co-total');
+      const finalTotalEl = document.getElementById('co-final-total');
+
+      // Form
+      const nameInput = document.getElementById('co-fullname');
+      const emailInput = document.getElementById('co-email');
+      const phoneInput = document.getElementById('co-phone');
+      const termsCheck = document.getElementById('co-terms-check');
+      const processingEl = document.getElementById('co-processing');
+      const paymentErrEl = document.getElementById('co-payment-err');
+
+      // WhatsApp
+      const whatsappBtn = document.getElementById('co-whatsapp');
+
+      /* ==============================
+         STATE
+         ============================== */
+      let currentStep = 1;
+      let discount = 0;
+      let appliedCoupon = null;
+      let isProcessing = false;
+
+      const price = CHECKOUT_CONFIG.product.price;
+
+      /* ==============================
+         HELPERS
+         ============================== */
+      function formatPrice(amount) {
+        return '$' + amount.toFixed(0);
+      }
+
+      function updateTotals() {
+        const total = Math.max(0, price - discount);
+        subtotalEl.textContent = formatPrice(price);
+        discountEl.textContent = discount > 0 ? '-' + formatPrice(discount) : '$0';
+        totalEl.textContent = formatPrice(total);
+        finalTotalEl.textContent = formatPrice(total);
+      }
+
+      function showStep(step) {
+        currentStep = step;
+        step1.classList.toggle('active', step === 1);
+        step2.classList.toggle('active', step === 2);
+        step3.classList.toggle('active', step === 3);
+        footer1.classList.toggle('co-hidden', step !== 1);
+        footer2.classList.toggle('co-hidden', step !== 2);
+      }
+
+      function openModal() {
+        overlay.classList.add('open');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        showStep(1);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        // Reset to step 1 after transition
+        setTimeout(function() {
+          if (!modal.classList.contains('open')) {
+            showStep(1);
+          }
+        }, 400);
+      }
+
+      function resetCheckout() {
+        discount = 0;
+        appliedCoupon = null;
+        couponInput.value = '';
+        couponMsg.textContent = '';
+        couponMsg.className = 'co-coupon-msg';
+        nameInput.value = '';
+        emailInput.value = '';
+        phoneInput.value = '';
+        termsCheck.checked = false;
+        clearErrors();
+        processingEl.classList.remove('visible');
+        paymentErrEl.classList.remove('visible');
+        purchaseBtn.disabled = false;
+        purchaseBtn.textContent = 'Complete Purchase';
+        isProcessing = false;
+        updateTotals();
+      }
+
+      /* ==============================
+         VALIDATION
+         ============================== */
+      function clearErrors() {
+        document.querySelectorAll('.co-form-error, .co-terms-error').forEach(function(el) {
+          el.classList.remove('visible');
+        });
+        document.querySelectorAll('.co-form-input.error').forEach(function(el) {
+          el.classList.remove('error');
+        });
+      }
+
+      function showError(inputEl, errorId) {
+        inputEl.classList.add('error');
+        document.getElementById(errorId).classList.add('visible');
+      }
+
+      function validateStep2() {
+        clearErrors();
+        let valid = true;
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[+]?[\d\s\-()]{7,20}$/;
+
+        if (!name) {
+          showError(nameInput, 'co-err-name');
+          valid = false;
+        }
+        if (!email || !emailRegex.test(email)) {
+          showError(emailInput, 'co-err-email');
+          valid = false;
+        }
+        if (!phone || !phoneRegex.test(phone)) {
+          showError(phoneInput, 'co-err-phone');
+          valid = false;
+        }
+        if (!termsCheck.checked) {
+          document.getElementById('co-err-terms').classList.add('visible');
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      // Clear field errors on input
+      [nameInput, emailInput, phoneInput].forEach(function(input) {
+        input.addEventListener('input', function() {
+          this.classList.remove('error');
+          var errId = this === nameInput ? 'co-err-name' : this === emailInput ? 'co-err-email' : 'co-err-phone';
+          document.getElementById(errId).classList.remove('visible');
+        });
+      });
+      termsCheck.addEventListener('change', function() {
+        document.getElementById('co-err-terms').classList.remove('visible');
+      });
+
+      /* ==============================
+         COUPON
+         ============================== */
+      couponApply.addEventListener('click', async function() {
+        const code = couponInput.value.trim();
+        if (!code) {
+          couponMsg.textContent = 'Please enter a coupon code.';
+          couponMsg.className = 'co-coupon-msg error';
+          return;
+        }
+
+        if (!CHECKOUT_CONFIG.couponValidation) {
+          couponMsg.textContent = 'Coupon validation is not currently available.';
+          couponMsg.className = 'co-coupon-msg error';
+          return;
+        }
+
+        try {
+          couponApply.textContent = '...';
+          let result;
+          if (typeof CHECKOUT_CONFIG.couponValidation === 'function') {
+            result = await CHECKOUT_CONFIG.couponValidation(code);
+          } else {
+            const resp = await fetch(CHECKOUT_CONFIG.couponValidation, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ code: code, productId: CHECKOUT_CONFIG.product.id })
+            });
+            result = await resp.json();
+          }
+
+          if (result && result.valid) {
+            appliedCoupon = code;
+            if (result.discountType === 'percentage') {
+              discount = Math.round(price * (result.discountValue / 100));
+            } else {
+              discount = result.discountValue;
+            }
+            discount = Math.min(discount, price);
+            couponMsg.textContent = 'Coupon applied.';
+            couponMsg.className = 'co-coupon-msg success';
+            couponInput.disabled = true;
+            couponApply.disabled = true;
+          } else {
+            couponMsg.textContent = 'This coupon code is not valid.';
+            couponMsg.className = 'co-coupon-msg error';
+            discount = 0;
+            appliedCoupon = null;
+          }
+        } catch(e) {
+          couponMsg.textContent = 'This coupon code is not valid.';
+          couponMsg.className = 'co-coupon-msg error';
+          discount = 0;
+          appliedCoupon = null;
+        }
+
+        couponApply.textContent = 'Apply';
+        updateTotals();
+      });
+
+      /* ==============================
+         NAVIGATION
+         ============================== */
+      // Open modal on any .btn-buy click
+      document.querySelectorAll('.btn-buy').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          resetCheckout();
+          // Populate modal with product data
+          document.getElementById('co-thumb').src = CHECKOUT_CONFIG.product.image;
+          document.getElementById('co-name').textContent = CHECKOUT_CONFIG.product.name;
+          document.getElementById('co-type').textContent = CHECKOUT_CONFIG.product.type;
+          document.getElementById('co-item-price').textContent = formatPrice(CHECKOUT_CONFIG.product.price);
+          document.getElementById('co-final-name').textContent = CHECKOUT_CONFIG.product.name;
+          updateTotals();
+          openModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      browseBtn.addEventListener('click', function() {
+        closeModal();
+        resetCheckout();
+      });
+
+      // ESC key closes modal only on step 1
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('open') && currentStep === 1) {
+          closeModal();
+        }
+      });
+
+      // Step 1 → Step 2
+      continueBtn.addEventListener('click', function() {
+        showStep(2);
+        // Scroll modal body to top
+        document.querySelector('.co-modal-body').scrollTop = 0;
+      });
+
+      // Step 2 → Step 1
+      backBtn.addEventListener('click', function() {
+        showStep(1);
+        document.querySelector('.co-modal-body').scrollTop = 0;
+      });
+
+      /* ==============================
+         PURCHASE
+         ============================== */
+      purchaseBtn.addEventListener('click', async function() {
+        if (isProcessing) return;
+        if (!validateStep2()) return;
+
+        isProcessing = true;
+        purchaseBtn.disabled = true;
+        purchaseBtn.textContent = 'Processing...';
+        processingEl.classList.add('visible');
+        paymentErrEl.classList.remove('visible');
+
+        const finalAmount = Math.max(0, price - discount);
+        const orderId = 'ORD-' + Date.now();
+
+        const orderData = {
+          orderId: orderId,
+          customerName: nameInput.value.trim(),
+          customerEmail: emailInput.value.trim(),
+          customerPhone: phoneInput.value.trim(),
+          productId: CHECKOUT_CONFIG.product.id,
+          productName: CHECKOUT_CONFIG.product.name,
+          originalPrice: price,
+          couponCode: appliedCoupon,
+          discountAmount: discount,
+          finalAmount: finalAmount,
+          paymentStatus: 'pending',
+          purchaseDate: new Date().toISOString()
+        };
+
+        // Attempt payment if provider is configured
+        if (CHECKOUT_CONFIG.paymentProvider) {
+          try {
+            const paymentResult = await CHECKOUT_CONFIG.paymentProvider(orderData);
+            if (!paymentResult || !paymentResult.success) {
+              paymentErrEl.textContent = 'Payment could not be completed. Please try again.';
+              paymentErrEl.classList.add('visible');
+              purchaseBtn.disabled = false;
+              purchaseBtn.textContent = 'Complete Purchase';
+              processingEl.classList.remove('visible');
+              isProcessing = false;
+              return;
+            }
+            orderData.paymentStatus = 'confirmed';
+            orderData.transactionId = paymentResult.transactionId;
+          } catch(e) {
+            paymentErrEl.textContent = 'Payment could not be completed. Please try again.';
+            paymentErrEl.classList.add('visible');
+            purchaseBtn.disabled = false;
+            purchaseBtn.textContent = 'Complete Purchase';
+            processingEl.classList.remove('visible');
+            isProcessing = false;
+            return;
+          }
+        } else {
+          // DEV MODE: No payment provider configured — skip to thank-you for UI preview
+          // TODO: Re-enable payment gate before production
+          orderData.paymentStatus = 'confirmed (dev mode)';
+        }
+
+        // Send email webhook if configured
+        if (CHECKOUT_CONFIG.emailWebhook) {
+          try {
+            fetch(CHECKOUT_CONFIG.emailWebhook, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                ...orderData,
+                productAccessUrl: CHECKOUT_CONFIG.productAccessUrl
+              })
+            });
+          } catch(e) {
+            // Email delivery failure is non-blocking
+          }
+        }
+
+        // Setup WhatsApp button
+        if (CHECKOUT_CONFIG.whatsappNumber) {
+          const msg = encodeURIComponent('Hello Marzanur, I recently purchased the ' + CHECKOUT_CONFIG.product.name + ' and need some assistance.');
+          whatsappBtn.href = 'https://wa.me/' + CHECKOUT_CONFIG.whatsappNumber + '?text=' + msg;
+          whatsappBtn.classList.remove('co-hidden');
+        } else {
+          whatsappBtn.classList.add('co-hidden');
+        }
+
+        // Show thank-you step
+        processingEl.classList.remove('visible');
+        showStep(3);
+        document.querySelector('.co-modal-body').scrollTop = 0;
+      });
+
+    })();
+
+    // --- FAQ Accordion toggle ---
+    document.querySelectorAll('.faq-accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Optional: close other FAQ items
+        document.querySelectorAll('.faq-accordion-item').forEach(el => el.classList.remove('active'));
+        
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // --- Similar Products Carousel Scroll ---
+    const track = document.getElementById('similar-carousel-track');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+
+    if (track && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const cardWidth = track.querySelector('.carousel-card').offsetWidth;
+        track.scrollLeft -= (cardWidth + 32);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const cardWidth = track.querySelector('.carousel-card').offsetWidth;
+        track.scrollLeft += (cardWidth + 32);
+      });
+    }
+  </script>
+
+</body>
+</html>

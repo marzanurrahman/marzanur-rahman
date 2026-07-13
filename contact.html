@@ -8,6 +8,216 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
+  
+  <style>
+    /* ========== CONTACT PAGE SCOPED STYLES ========== */
+    
+    .contact-section {
+      padding-top: calc(88px + var(--space-6)); /* Reduced vertical space between nav and contact label */
+      padding-bottom: 90px; /* 80 to 96px between contact area and footer */
+    }
+
+    .contact-container {
+      max-width: 1000px; /* 960 to 1040px inner content width */
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+    }
+
+    .contact-intro {
+      margin-bottom: 52px; /* 48 to 56px between intro and main contact layout */
+      max-width: 600px;
+    }
+
+    .contact-intro h1 {
+      margin-top: 8px;
+      margin-bottom: 12px;
+      font-size: 40px;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 8%;
+      align-items: start;
+    }
+
+    .contact-form-col {
+      flex: 0 0 60%; /* 58 to 62 percent */
+    }
+
+    .contact-info-col {
+      flex: 0 0 32%; /* 30 to 34 percent */
+      border-left: 2px solid var(--accent); /* Subtle thin orange vertical line */
+      padding-left: var(--space-6); /* Comfortable left padding */
+      margin-top: 8px; /* Aligns with the upper portion of the form inputs */
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* 18 to 24px vertical gap between form groups */
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .form-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .form-input, .form-textarea {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-body);
+      background-color: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 14px; /* Improved input height and padding */
+      transition: border-color var(--transition);
+      outline: none;
+      width: 100%;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      height: 170px; /* 160 to 190px height on desktop */
+      min-height: 120px;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .contact-submit {
+      align-self: flex-start;
+      margin-top: 4px;
+      padding: 12px 28px; /* Slightly reduced button size */
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--btn-radius);
+      cursor: pointer;
+      transition: background-color var(--transition);
+      width: auto; /* Content-based width */
+    }
+
+    .contact-submit:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .contact-info-block {
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-info-block h3 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+    }
+
+    .contact-info-block p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .contact-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-link {
+      font-size: 15px;
+      color: var(--text-heading);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color var(--transition);
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .contact-link:hover {
+      color: var(--accent); /* Subtle orange hover state */
+    }
+
+    .form-feedback {
+      display: none;
+      padding: 16px;
+      background-color: #FAFAF8;
+      border-left: 3px solid var(--accent);
+      color: var(--text-heading);
+      border-radius: 2px;
+      font-size: 15px;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        flex-direction: column;
+        gap: var(--space-8);
+      }
+      .contact-form-col {
+        width: 100%;
+      }
+      .contact-info-col {
+        width: 100%;
+        border-left: 2px solid var(--accent); /* Retain vertical line on mobile */
+        padding-left: var(--space-4);
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .form-textarea {
+        height: 150px; /* Reduced to ~150px on mobile */
+      }
+      .contact-submit {
+        width: 100%; /* Fill width on mobile for usability */
+      }
+    }
+  </style>
+
+
 </head>
 <body>
   <header class="site-header" id="site-header">
@@ -15,34 +225,34 @@
       <a href="/" class="logo">MR</a>
 
       <nav class="nav-desktop" id="nav-desktop">
-        <a href="about.html">About</a>
+        <a href="index.html">Home</a>
         <div class="has-dropdown">
-          <a href="#">Solutions <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <a href="#">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
           <div class="dropdown-menu">
-            <a href="solutions-meta-marketing.html">Meta Marketing</a>
-            <a href="solutions-marketing-systems.html">Marketing Systems</a>
-            <a href="solutions-ai-automation.html">AI &amp; Automation</a>
-            <a href="solutions-consultation.html">Consultation</a>
+            <a href="services-meta-marketing.html">Meta Marketing</a>
+            <a href="services-google-ads.html">Google Ads</a>
+            <a href="services-marketing-analytics.html">Marketing Analytics</a>
+            <a href="services-marketing-strategy.html">Marketing Strategy</a>
+            <a href="services-consultation.html">1:1 Consultation</a>
           </div>
         </div>
+        <a href="product.html">Product</a>
         <div class="has-dropdown">
-          <a href="#">Resources <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <a href="#">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
           <div class="dropdown-menu">
-            <a href="resources-free-guides.html">Free Guides</a>
-            <a href="resources-templates.html">Templates</a>
-            <a href="resources-playbooks.html">Playbooks</a>
-            <a href="resources-digital-products.html">Digital Products</a>
+            <a href="newsletter-free.html">Free Newsletter</a>
+            <a href="newsletter-signal.html">Signal</a>
           </div>
         </div>
+        <a href="case-studies.html">Case Study</a>
         <div class="has-dropdown">
-          <a href="#">Insights <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <a href="#">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
           <div class="dropdown-menu">
-            <a href="insights-articles.html">Articles</a>
-            <a href="insights-research.html">Research</a>
-            <a href="insights-newsletter.html">Newsletter</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
           </div>
         </div>
-        <a href="projects.html">Selected Projects</a>
         <a href="contact.html" class="nav-cta">Let's Talk</a>
       </nav>
 
@@ -54,43 +264,112 @@
     </div>
 
     <nav class="nav-mobile" id="nav-mobile">
-      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
       <div class="has-dropdown-mobile">
-        <button class="dropdown-toggle-mobile">Solutions <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="dropdown-toggle-mobile">Services <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="dropdown-menu-mobile">
-          <a href="solutions-meta-marketing.html">Meta Marketing</a>
-          <a href="solutions-marketing-systems.html">Marketing Systems</a>
-          <a href="solutions-ai-automation.html">AI &amp; Automation</a>
-          <a href="solutions-consultation.html">Consultation</a>
+          <a href="services-meta-marketing.html">Meta Marketing</a>
+          <a href="services-google-ads.html">Google Ads</a>
+          <a href="services-marketing-analytics.html">Marketing Analytics</a>
+          <a href="services-marketing-strategy.html">Marketing Strategy</a>
+          <a href="services-consultation.html">1:1 Consultation</a>
         </div>
       </div>
+      <a href="product.html">Product</a>
       <div class="has-dropdown-mobile">
-        <button class="dropdown-toggle-mobile">Resources <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="dropdown-toggle-mobile">News Letter <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="dropdown-menu-mobile">
-          <a href="resources-free-guides.html">Free Guides</a>
-          <a href="resources-templates.html">Templates</a>
-          <a href="resources-playbooks.html">Playbooks</a>
-          <a href="resources-digital-products.html">Digital Products</a>
+          <a href="newsletter-free.html">Free Newsletter</a>
+          <a href="newsletter-signal.html">Signal</a>
         </div>
       </div>
+      <a href="case-studies.html">Case Study</a>
       <div class="has-dropdown-mobile">
-        <button class="dropdown-toggle-mobile">Insights <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="dropdown-toggle-mobile">Others <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="dropdown-menu-mobile">
-          <a href="insights-articles.html">Articles</a>
-          <a href="insights-research.html">Research</a>
-          <a href="insights-newsletter.html">Newsletter</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
         </div>
       </div>
-      <a href="projects.html">Selected Projects</a>
       <a href="contact.html" class="nav-cta-mobile">Let's Talk</a>
     </nav>
   </header>
 
-  <section class="hero" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="contact-section">
     <div class="container">
-      <span class="label">Let's Talk</span>
-      <h1 style="margin-bottom: var(--space-4);">Let's Talk</h1>
-      <p class="body-sm" style="color: var(--text-muted);">This page is a placeholder for future content.</p>
+      
+      <!-- Contact Intro -->
+      <div class="contact-intro reveal">
+        <span class="label">CONTACT</span>
+        <h1>Get in Touch.</h1>
+        <p class="body-sm" style="color: var(--text-muted); font-size: 17px;">
+          Have a question or want to get in touch? Send me a message using the form below.
+        </p>
+      </div>
+
+      <!-- Main Contact Area -->
+      <div class="contact-grid">
+        
+        <!-- Left Side: Form -->
+        <div class="contact-form-col reveal reveal-delay-1">
+          <div class="form-feedback" id="form-feedback">
+            Message sent successfully.
+          </div>
+          
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" name="subject" class="form-input" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-textarea" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Right Side: Contact Information -->
+        <div class="contact-info-col reveal reveal-delay-2">
+          
+          <div class="contact-info-block">
+            <h3>Contact</h3>
+            <p>For general questions, website enquiries, or anything else, feel free to send a message.</p>
+          </div>
+
+          <div class="contact-info-block">
+            <span class="contact-label">Email</span>
+            <div class="contact-links">
+              <a href="mailto:hello@marzanurrahman.com" class="contact-link">hello@marzanurrahman.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-block">
+            <span class="contact-label">Elsewhere</span>
+            <div class="contact-links">
+              <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -110,8 +389,7 @@
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#ways-to-work">Services</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#insights">Articles</a></li>
+            <li><a href="blog.html">Articles</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -120,7 +398,7 @@
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="newsletter-free.html">Newsletter</a></li>
             <li><a href="#free-guide">Free Guide</a></li>
             <li><a href="#">Resources</a></li>
             <li><a href="#">Consultation</a></li>
@@ -199,13 +477,22 @@
       revealObserver.observe(el);
     });
 
-    // Prevent default form submissions (demo)
-    document.querySelectorAll('form').forEach(function (form) {
-      form.addEventListener('submit', function (e) {
+    // Contact Form Validation and Submission (UI only, ready for backend integration)
+    const contactForm = document.getElementById('contact-form');
+    const formFeedback = document.getElementById('form-feedback');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('Thank you! This form is not yet connected to a backend.');
+        
+        // Basic validation is handled by HTML5 required attributes.
+        // TODO: Integrate actual form backend/email delivery system here.
+        // Currently, it just displays the success state.
+        
+        contactForm.style.display = 'none';
+        formFeedback.style.display = 'block';
       });
-    });
+    }
   </script>
 
 </body>
