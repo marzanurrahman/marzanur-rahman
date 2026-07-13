@@ -831,9 +831,9 @@ section.alt-bg {
   padding: var(--space-5) var(--space-6);
 }
 
-.way-card-featured:hover {
-  background-color: var(--text-heading);
-  border-color: var(--text-heading);
+.way-card.way-card-featured:hover {
+  background-color: var(--text-heading) !important;
+  border-color: var(--text-heading) !important;
   box-shadow: 0 8px 32px rgba(22, 33, 62, 0.18);
   transform: translateY(-2px);
 }
