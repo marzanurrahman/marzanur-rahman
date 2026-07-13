@@ -832,6 +832,7 @@ section.alt-bg {
 }
 
 .way-card-featured:hover {
+  background-color: var(--text-heading);
   border-color: var(--text-heading);
   box-shadow: 0 8px 32px rgba(22, 33, 62, 0.18);
   transform: translateY(-2px);
