@@ -637,21 +637,37 @@ section.alt-bg {
   align-items: center;
 }
 
-.hero-image img,
-.hero-placeholder {
+.hero-image img {
   width: 100%;
   max-width: 460px;
   border-radius: var(--card-radius);
   object-fit: cover;
   aspect-ratio: 4 / 5;
   box-shadow: 0 12px 48px rgba(22, 33, 62, 0.12);
-  overflow: hidden;
 }
 
-.hero-placeholder svg {
+.hero-placeholder {
   width: 100%;
-  height: 100%;
-  display: block;
+  max-width: 460px;
+  border-radius: var(--card-radius);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 12px 48px rgba(22, 33, 62, 0.12);
+  background-color: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px dashed var(--border);
+  user-select: none;
+}
+
+.hero-placeholder .placeholder-text {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
 }
 
 /* ---------- ABOUT ---------- */
