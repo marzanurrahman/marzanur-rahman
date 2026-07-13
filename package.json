@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Portfolio website",
   "scripts": {
-    "dev": "npx http-server -p 8000"
+    "dev": "npx http-server -p 8000 -c-1"
   }
 }

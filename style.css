@@ -213,6 +213,7 @@ section.alt-bg {
 
 .btn-primary:hover {
   background-color: var(--accent-hover);
+  color: #FFFFFF;
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 var(--text-heading);
 }
